@@ -24,84 +24,112 @@
     "section_number_format": "[database].[subhive].[subsubhive].[section].[sequence]",
     "process_id_style": "Verb + Object (e.g., Load CSV, Generate Report)",
     "orbt_enabled": true,
+    "orbt_protocol": "3_strike_escalation_with_institutional_knowledge",
     "schema_enforcement": "STAMPED/SPVPET/STACKED",
-    "doctrine_enforcement_level": "strict|required|optional - Choose enforcement level"
+    "doctrine_enforcement_level": "strict",
+    "institutional_knowledge_enabled": true,
+    "cross_project_learning": true
   },
 
-  "// WHICH AGENTS TO USE": "=== AGENT ACTIVATION (set to true for needed agents) ===",
+  "// SKYSCRAPER CONSTRUCTION AGENTS": "=== AGENT ACTIVATION (set to true for needed agents) ===",
   "agents_needed": {
-    "// System Orchestrator": "DPR doctrine enforcement and ID management", 
+    "// LEVEL 0: Meta-System (Always Required)": "",
+    "master_orchestrator": {
+      "use_this_agent": true,
+      "role": "building_superintendent",
+      "why": "Always needed - coordinates all domain orchestrators like a construction superintendent"
+    },
+    
     "system_orchestrator": {
       "use_this_agent": true,
-      "why": "Always needed - enforces your DPR doctrine system"
+      "role": "dpr_doctrine_enforcement",
+      "why": "Always needed - enforces your DPR doctrine system across all agents"
     },
 
-    "// HEIR Claude Code Specialist": "Automates all Claude Code operations",
     "heir_claude_code_specialist": {
-      "use_this_agent": true, 
-      "why": "Always needed - handles all Claude Code syntax and HEIR system setup automatically"
-    },
-
-    "// CEO Orchestrator": "Project coordination", 
-    "ceo_orchestrator": {
       "use_this_agent": true,
-      "why": "Always needed - master coordinator"
-    },
-    
-    "// Use for complex multi-part projects": "",
-    "project_planner": {
-      "use_this_agent": false,
-      "why": "Only for complex projects with multiple phases"
+      "role": "claude_code_automation", 
+      "why": "Always needed - automates all Claude Code operations and HEIR system setup"
     },
 
-    "// MANAGERS - Use if you need these areas": "",
-    "backend_manager": {
+    "// LEVEL 1: Domain Orchestrators (Floor Managers)": "",
+    
+    "data_orchestrator": {
       "use_this_agent": false,
-      "why": "Need APIs, databases, or server logic",
-      "what_to_build": "Describe backend requirements"
+      "role": "data_floor_manager",
+      "why": "Need databases, data storage, queries, or data processing",
+      "specialists_managed": ["database-specialist", "api-specialist"],
+      "what_to_build": "Describe data requirements (databases, schemas, data flows)"
     },
     
-    "integration_manager": {
+    "payment_orchestrator": {
       "use_this_agent": false,
-      "why": "Need external APIs, scraping, or data pipelines",
+      "role": "financial_floor_manager",
+      "why": "Need payment processing, billing, or financial transactions",
+      "specialists_managed": ["payment-specialist", "api-specialist"],
+      "what_to_build": "Describe payment requirements (gateways, billing, compliance)"
+    },
+    
+    "integration_orchestrator": {
+      "use_this_agent": false,
+      "role": "external_services_floor_manager",
+      "why": "Need external APIs, web scraping, or third-party integrations",
+      "specialists_managed": ["api-specialist", "scraper-specialist"],
       "what_to_integrate": "List external services/APIs needed"
     },
     
-    "deployment_manager": {
+    "platform_orchestrator": {
       "use_this_agent": false,
-      "why": "Need hosting, CI/CD, or infrastructure",
+      "role": "infrastructure_floor_manager",
+      "why": "Need deployment, hosting, infrastructure, or monitoring",
+      "specialists_managed": ["deployment-specialist", "monitoring-specialist"],
       "where_to_deploy": "Platform preferences (Render, Vercel, etc.)"
     },
 
-    "// SPECIALISTS - Use if you need specific tools": "",
-    "neon_database": {
-      "use_this_agent": false,
-      "why": "Need PostgreSQL database",
-      "database_needs": "Describe what data you need to store"
-    },
-    
-    "stripe_payments": {
-      "use_this_agent": false,
-      "why": "Need payment processing",
-      "payment_details": "What kind of payments? (one-time, subscriptions, etc.)"
-    },
-    
-    "web_scraping": {
-      "use_this_agent": false,
-      "why": "Need to scrape websites for data",
-      "scraping_targets": "What websites/data do you need?"
-    },
-    
-    "orbt_monitor": {
-      "use_this_agent": true,
-      "why": "Production systems need real-time monitoring and error logging",
-      "monitoring_requirements": "Real-time dashboard, global error logging, automated escalation"
-    },
-    
-    "error_handling": {
-      "use_this_agent": false,
-      "why": "Need advanced error handling and monitoring beyond ORBT",
-      "error_requirements": "What kind of specialized errors to catch/handle?"
+    "// LEVEL 2: Specialist Library (Reusable Workforce - Assigned by Domain Orchestrators)": "",
+    "specialist_assignments": {
+      "note": "Specialists are assigned automatically by Domain Orchestrators based on needs",
+      "database_specialist": {
+        "auto_assigned_by": "data_orchestrator",
+        "capabilities": "All database types, STAMPED/SPVPET/STACKED schema enforcement",
+        "cross_project_reusability": "high"
+      },
+      "payment_specialist": {
+        "auto_assigned_by": "payment_orchestrator", 
+        "capabilities": "All payment gateways, PCI compliance, fraud detection",
+        "cross_project_reusability": "high"
+      },
+      "api_specialist": {
+        "auto_assigned_by": ["data_orchestrator", "payment_orchestrator", "integration_orchestrator"],
+        "capabilities": "External API integration, authentication, rate limiting",
+        "cross_project_reusability": "very_high"
+      },
+      "scraper_specialist": {
+        "auto_assigned_by": "integration_orchestrator",
+        "capabilities": "Ethical web scraping, anti-detection, data quality",
+        "cross_project_reusability": "high"
+      },
+      "deployment_specialist": {
+        "auto_assigned_by": "platform_orchestrator",
+        "capabilities": "All hosting platforms, CI/CD, infrastructure as code",
+        "cross_project_reusability": "very_high"
+      },
+      "monitoring_specialist": {
+        "auto_assigned_by": "platform_orchestrator",
+        "capabilities": "ORBT monitoring, real-time dashboards, predictive alerts",
+        "cross_project_reusability": "maximum",
+        "always_recommended": true
+      },
+      "communication_specialist": {
+        "auto_assigned_by": ["payment_orchestrator", "platform_orchestrator"],
+        "capabilities": "Email, SMS, push notifications, multi-channel orchestration",
+        "cross_project_reusability": "high"
+      },
+      "ai_ml_specialist": {
+        "auto_assigned_by": "integration_orchestrator",
+        "capabilities": "AI API integration, cost optimization, safety implementation",
+        "cross_project_reusability": "high"
+      }
     }
   },
 
@@ -147,20 +175,43 @@
     },
     
     "monitoring_details": {
+      "orbt_3_strike_protocol": {
+        "strike_1_auto_fix": true,
+        "strike_2_alternatives": true,
+        "strike_3_human_escalation": true,
+        "institutional_knowledge_integration": true
+      },
       "dashboard_enabled": true,
       "error_log_retention": "30 days",
       "escalation_channels": ["slack", "email"],
       "orbt_compliance": true,
       "performance_tracking": true,
-      "training_logs": true
+      "training_logs": true,
+      "cross_project_learning": true
+    },
+    
+    "institutional_knowledge_details": {
+      "knowledge_capture_enabled": true,
+      "pattern_recognition_enabled": true,
+      "cross_project_learning_enabled": true,
+      "solution_effectiveness_tracking": true,
+      "automatic_solution_application_threshold": 0.8,
+      "knowledge_validation_required": true
     }
   },
 
   "// AUTOMATIC - DON'T CHANGE": "=== SYSTEM FIELDS ===",
   "system": {
-    "entry_point": "ceo-orchestrator",
+    "architecture_model": "skyscraper_construction",
+    "entry_point": "master-orchestrator",
+    "user_interface": "heir-claude-code-specialist",
+    "doctrine_enforcement": "system-orchestrator",
+    "orbt_protocol": "3_strike_escalation",
+    "institutional_knowledge_enabled": true,
+    "cross_project_learning": true,
     "auto_repair": true,
     "session_tracking": true,
+    "heir_version": "2.0.0_skyscraper_model",
     "created_timestamp": "",
     "last_updated": ""
   }

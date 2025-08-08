@@ -1,223 +1,314 @@
 {
-  "// GLOBAL AGENT CATALOG": "Battle-tested agents with proven solutions",
-  "description": "These agents contain hard-won knowledge and debugged solutions",
-  "version": "1.0.0",
+  "// HEIR GLOBAL AGENT CATALOG": "Skyscraper Construction Model - Battle-tested agents with proven solutions",
+  "description": "Master Orchestrator + Domain Orchestrators + Specialist Library with institutional knowledge",
+  "version": "2.0.0",
+  "architecture": "skyscraper_construction_model",
   "last_updated": "2025-08-08",
 
-  "global_agents": {
-    "// DEPLOYMENT SPECIALISTS": "Proven deployment solutions",
+  "meta_system_agents": {
+    "// LEVEL 0: META-SYSTEM": "Building Superintendent and System Coordination",
     
-    "render-lovable-integrator": {
-      "agent_id": "render-lovable-integrator",
-      "level": 3,
-      "status": "battle_tested",
-      "description": "Deploy React apps to Render with Lovable.dev - CORS issues pre-solved + CLI tools",
-      "solves": [
-        "CORS configuration headaches",
-        "Render + Lovable.dev integration",
-        "Environment variable setup",
-        "Build process optimization",
-        "Lovable metadata cleanup with delovable CLI"
+    "master-orchestrator": {
+      "agent_id": "master-orchestrator",
+      "level": 0,
+      "role": "building_superintendent", 
+      "status": "production_ready",
+      "description": "Building Superintendent coordinating all domain orchestrators like a construction project",
+      "responsibilities": [
+        "Analyze complete project requirements and create domain assignment plans",
+        "Coordinate Data, Payment, Integration, and Platform orchestrators", 
+        "Handle 3-strike ORBT escalations from domain level",
+        "Ensure quality integration between all domains",
+        "Apply institutional knowledge from previous projects"
       ],
-      "cli_tools": ["delovable", "next-lovable"],
-      "file_location": "agents/global/specialists/render-lovable-integrator.md",
-      "when_to_use": "Deploying Lovable.dev projects to Render",
-      "problems_solved": {
-        "cors_nightmare": "Pre-configured CORS headers that actually work",
-        "build_failures": "Proven build scripts and env var setup",
-        "deployment_loops": "Step-by-step deployment that works first try",
-        "lovable_metadata": "Automatic cleanup with delovable CLI tool"
-      },
-      "project_types": ["react_apps", "lovable_projects", "render_deployments"]
+      "file_location": "agents/global/orchestrators/master-orchestrator.md",
+      "when_to_use": "Always - required for all HEIR projects as Building Superintendent",
+      "coordinates_with": ["data-orchestrator", "payment-orchestrator", "integration-orchestrator", "platform-orchestrator"],
+      "escalation_handling": "3_strike_orbt_protocol_with_human_escalation",
+      "institutional_knowledge": "applies_cross_project_learning_automatically"
     },
 
-    "nextjs-migration-specialist": {
-      "agent_id": "nextjs-migration-specialist",
-      "level": 3,
-      "status": "battle_tested",
-      "description": "Migrate Lovable.dev projects to Next.js and deploy to Vercel/Netlify",
-      "solves": [
-        "Lovable.dev to Next.js migration",
-        "Next.js configuration optimization",
-        "Vercel/Netlify deployment setup",
-        "API integration with existing Render endpoints",
-        "Static export configuration"
+    "system-orchestrator": {
+      "agent_id": "system-orchestrator", 
+      "level": 0,
+      "role": "dpr_doctrine_enforcement",
+      "status": "production_ready",
+      "description": "DPR doctrine enforcement, unique ID generation, ORBT protocol implementation",
+      "responsibilities": [
+        "Enforce DPR doctrine system across all agents",
+        "Generate unique IDs in format [DB].[SUBHIVE].[MICROPROCESS].[TOOL].[ALTITUDE].[STEP]",
+        "Implement ORBT protocols and Universal Rules 1-7",
+        "Schema enforcement for STAMPED/SPVPET/STACKED formats"
       ],
-      "cli_tools": ["next-lovable", "delovable", "vercel", "netlify-cli"],
-      "file_location": "agents/global/specialists/nextjs-migration-specialist.md",
-      "when_to_use": "Need to migrate Lovable.dev projects to Next.js framework",
-      "problems_solved": {
-        "migration_complexity": "Automated migration with next-lovable CLI",
-        "api_integration": "Seamless integration with existing Render database endpoints",
-        "deployment_options": "Support for Vercel, Netlify, and static hosting",
-        "configuration_issues": "Optimized Next.js config for migrated projects"
-      },
-      "project_types": ["nextjs_apps", "lovable_migrations", "vercel_deployments", "netlify_deployments"]
+      "file_location": "agents/global/orchestrators/system-orchestrator.md", 
+      "when_to_use": "Always - enforces your complete DPR system across all agents",
+      "integrates_with": ["command_ops_database", "doctrine_table"],
+      "enforces": ["STAMPED_SPVPET_STACKED_schema", "section_numbering", "process_id_format"]
     },
 
-    "stripe-saas-handler": {
-      "agent_id": "stripe-saas-handler", 
-      "level": 3,
-      "status": "needs_creation",
-      "description": "Complete SaaS payment flows with Stripe - webhook debugging done",
-      "solves": [
-        "Webhook signature verification",
-        "Subscription lifecycle management", 
-        "Failed payment recovery",
-        "Proration calculations"
+    "heir-claude-code-specialist": {
+      "agent_id": "heir-claude-code-specialist",
+      "level": 0, 
+      "role": "claude_code_automation",
+      "status": "production_ready",
+      "description": "Expert Claude Code operations with complete HEIR skyscraper system integration",
+      "responsibilities": [
+        "Automate all Claude Code commands and HEIR system setup",
+        "Create Master + Domain Orchestrators + Specialist assignments automatically",
+        "Apply institutional knowledge during system setup",
+        "Handle user intent without requiring technical knowledge"
       ],
-      "file_location": "agents/global/specialists/stripe-saas-handler.md",
-      "when_to_use": "SaaS apps with subscription billing",
-      "problems_solved": {
-        "webhook_failures": "Proper webhook handling with retry logic",
-        "subscription_edge_cases": "Handles upgrades, downgrades, cancellations",
-        "payment_recovery": "Automated dunning and recovery flows"
-      },
-      "project_types": ["saas_apps", "subscription_business", "recurring_billing"]
+      "file_location": "agents/global/orchestrators/heir-claude-code-specialist.md",
+      "when_to_use": "Always - automates all Claude Code operations for users",
+      "automates": ["skyscraper_construction", "specialist_assignment", "orbt_compliance", "institutional_knowledge_application"]
+    }
+  },
+
+  "domain_orchestrators": {
+    "// LEVEL 1: DOMAIN ORCHESTRATORS": "Floor Managers for specific domains",
+
+    "data-orchestrator": {
+      "agent_id": "data-orchestrator",
+      "level": 1,
+      "role": "data_floor_manager",
+      "status": "production_ready", 
+      "description": "Floor Manager for all data operations and storage systems",
+      "domain_scope": ["databases", "storage_systems", "data_flows", "queries", "migrations", "security"],
+      "specialists_managed": ["database-specialist", "api-specialist"],
+      "file_location": "agents/global/orchestrators/data-orchestrator.md",
+      "when_to_use": "Any project requiring data storage, databases, or data processing",
+      "orbt_monitoring": ["connection_failures", "slow_queries", "data_integrity_issues"],
+      "coordinates_with": ["payment-orchestrator", "integration-orchestrator", "platform-orchestrator"],
+      "institutional_knowledge_domain": "database_optimizations_and_data_patterns"
     },
 
+    "payment-orchestrator": {
+      "agent_id": "payment-orchestrator",
+      "level": 1,
+      "role": "financial_floor_manager",
+      "status": "production_ready",
+      "description": "Floor Manager for all payment processing and financial systems",
+      "domain_scope": ["payment_processing", "billing_systems", "financial_compliance", "fraud_prevention", "financial_reporting"],
+      "specialists_managed": ["payment-specialist", "api-specialist"],
+      "file_location": "agents/global/orchestrators/payment-orchestrator.md", 
+      "when_to_use": "Any project requiring payment processing, billing, or financial transactions",
+      "orbt_monitoring": ["transaction_failures", "webhook_issues", "compliance_violations"],
+      "pci_compliance": "automatic_pci_dss_compliance_implementation",
+      "institutional_knowledge_domain": "payment_integrations_and_financial_patterns"
+    },
+
+    "integration-orchestrator": {
+      "agent_id": "integration-orchestrator",
+      "level": 1, 
+      "role": "external_services_floor_manager",
+      "status": "production_ready",
+      "description": "Floor Manager for all external integrations and third-party connections",
+      "domain_scope": ["external_apis", "web_scraping", "third_party_services", "data_pipelines", "authentication_systems"],
+      "specialists_managed": ["api-specialist", "scraper-specialist"],
+      "file_location": "agents/global/orchestrators/integration-orchestrator.md",
+      "when_to_use": "Any project requiring external API integration, web scraping, or third-party services",
+      "orbt_monitoring": ["api_failures", "rate_limiting_issues", "data_quality_problems"],
+      "rate_limiting": "intelligent_rate_limiting_and_cost_optimization",
+      "institutional_knowledge_domain": "integration_patterns_and_external_service_optimization"
+    },
+
+    "platform-orchestrator": {
+      "agent_id": "platform-orchestrator",
+      "level": 1,
+      "role": "infrastructure_floor_manager", 
+      "status": "production_ready",
+      "description": "Floor Manager for all deployment, hosting, and infrastructure operations",
+      "domain_scope": ["deployment_management", "hosting_infrastructure", "monitoring_systems", "scaling_operations", "security_infrastructure"],
+      "specialists_managed": ["deployment-specialist", "monitoring-specialist"],
+      "file_location": "agents/global/orchestrators/platform-orchestrator.md",
+      "when_to_use": "Any project requiring deployment, hosting, infrastructure, or monitoring",
+      "orbt_monitoring": ["deployment_failures", "performance_issues", "uptime_problems"],
+      "infrastructure_automation": "ci_cd_pipelines_and_infrastructure_as_code",
+      "institutional_knowledge_domain": "deployment_patterns_and_infrastructure_optimization"
+    }
+  },
+
+  "specialist_library": {
+    "// LEVEL 2: SPECIALIST LIBRARY": "Reusable workforce pool - Same specialist works across multiple projects",
+
+    "database-specialist": {
+      "agent_id": "database-specialist",
+      "level": 2,
+      "role": "data_storage_expert",
+      "status": "production_ready",
+      "description": "Database expert working across all projects requiring data storage",
+      "tools": ["PostgreSQL", "MySQL", "MongoDB", "Neon", "Firebase", "BigQuery", "Supabase"],
+      "specialties": ["STAMPED_schema_enforcement_for_Neon", "SPVPET_schema_enforcement_for_Firebase", "STACKED_schema_enforcement_for_BigQuery"],
+      "cross_project_reusability": "high_reusability_across_all_data_driven_projects",
+      "institutional_knowledge_applies_to": ["connection_pool_optimization", "query_performance_patterns", "schema_migration_strategies"],
+      "orbt_monitoring": ["connection_failures", "slow_queries", "data_integrity_violations"],
+      "battle_tested_solutions": ["connection_pooling_for_serverless", "query_optimization_patterns", "disaster_recovery_procedures"]
+    },
+
+    "payment-specialist": {
+      "agent_id": "payment-specialist",
+      "level": 2,
+      "role": "financial_processing_expert",
+      "status": "production_ready",
+      "description": "Payment processing expert working across all projects requiring financial transactions",
+      "tools": ["Stripe", "PayPal", "Square", "Authorize.net", "Adyen", "Apple_Pay", "Google_Pay"],
+      "specialties": ["Stripe_webhook_security_and_reliability", "PCI_compliance_automation", "fraud_detection_optimization"],
+      "cross_project_reusability": "high_reusability_across_all_monetized_projects",
+      "institutional_knowledge_applies_to": ["webhook_retry_patterns", "subscription_billing_edge_cases", "fraud_prevention_strategies"],
+      "orbt_monitoring": ["payment_failure_rates", "webhook_delivery_failures", "compliance_violations"],
+      "battle_tested_solutions": ["stripe_webhook_idempotency", "subscription_proration_handling", "multi_gateway_failover"]
+    },
+
+    "api-specialist": {
+      "agent_id": "api-specialist", 
+      "level": 2,
+      "role": "integration_expert",
+      "status": "production_ready",
+      "description": "API integration expert working across all projects requiring external service connections",
+      "tools": ["REST_APIs", "GraphQL", "SOAP", "WebSockets", "OAuth", "JWT", "API_Gateway_tools"],
+      "specialties": ["OAuth_2_0_implementation", "intelligent_rate_limiting", "multi_provider_failover"],
+      "cross_project_reusability": "very_high_reusability_across_all_integration_heavy_projects",
+      "institutional_knowledge_applies_to": ["API_provider_quirks", "optimal_retry_strategies", "rate_limiting_optimization"],
+      "orbt_monitoring": ["API_response_times", "rate_limit_usage", "authentication_failures"],
+      "battle_tested_solutions": ["api_retry_with_exponential_backoff", "oauth_token_refresh_automation", "api_failover_systems"]
+    },
+
+    "scraper-specialist": {
+      "agent_id": "scraper-specialist",
+      "level": 2,
+      "role": "data_extraction_expert", 
+      "status": "production_ready",
+      "description": "Web scraping expert working across all projects requiring data extraction",
+      "tools": ["Apify", "Puppeteer", "BeautifulSoup", "Selenium", "Firecrawl", "Scrapy", "Playwright"],
+      "specialties": ["Apify_actor_optimization", "anti_detection_techniques", "ethical_scraping_compliance"],
+      "cross_project_reusability": "high_reusability_across_all_data_collection_projects", 
+      "institutional_knowledge_applies_to": ["website_specific_strategies", "anti_detection_effectiveness", "data_quality_patterns"],
+      "orbt_monitoring": ["scraping_success_rates", "IP_blocking_alerts", "data_quality_issues"],
+      "battle_tested_solutions": ["javascript_heavy_site_scraping", "large_scale_coordination", "ethical_rate_limiting"]
+    },
+
+    "deployment-specialist": {
+      "agent_id": "deployment-specialist",
+      "level": 2,
+      "role": "infrastructure_expert",
+      "status": "production_ready", 
+      "description": "Infrastructure and deployment expert working across all projects requiring hosting",
+      "tools": ["Render", "Vercel", "AWS", "Google_Cloud", "Docker", "Kubernetes", "GitHub_Actions", "GitLab_CI"],
+      "specialties": ["Render_optimization", "Vercel_serverless_deployment", "zero_downtime_strategies"],
+      "cross_project_reusability": "very_high_reusability_across_all_projects_requiring_infrastructure",
+      "institutional_knowledge_applies_to": ["platform_specific_optimizations", "cost_optimization_patterns", "scaling_strategies"],
+      "orbt_monitoring": ["deployment_success_rates", "application_uptime", "resource_utilization"],
+      "battle_tested_solutions": ["render_cors_configuration", "docker_optimization", "ci_cd_pipeline_templates"]
+    },
+
+    "monitoring-specialist": {
+      "agent_id": "monitoring-specialist",
+      "level": 2,
+      "role": "system_monitoring_expert",
+      "status": "production_ready",
+      "description": "System monitoring expert working across all production systems", 
+      "tools": ["Custom_Dashboards", "Grafana", "Prometheus", "DataDog", "New_Relic", "Log_Analysis_Tools"],
+      "specialties": ["ORBT_protocol_monitoring", "predictive_alerting", "multi_system_correlation"],
+      "cross_project_reusability": "maximum_reusability_across_all_production_systems",
+      "institutional_knowledge_applies_to": ["optimal_alerting_thresholds", "dashboard_design_patterns", "incident_response_automation"],
+      "orbt_monitoring": ["monitoring_system_health", "alert_fatigue_prevention", "false_positive_reduction"],
+      "battle_tested_solutions": ["real_time_orbt_dashboards", "3_strike_escalation_automation", "predictive_failure_detection"]
+    },
+
+    "communication-specialist": {
+      "agent_id": "communication-specialist",
+      "level": 2,
+      "role": "user_communication_expert",
+      "status": "production_ready",
+      "description": "Communication systems expert working across all projects requiring user notifications",
+      "tools": ["SendGrid", "Mailgun", "Twilio", "Slack_API", "Discord_API", "Push_Notification_Services"],
+      "specialties": ["SendGrid_deliverability_optimization", "multi_channel_orchestration", "compliance_with_regulations"],
+      "cross_project_reusability": "high_reusability_across_all_user_facing_projects",
+      "institutional_knowledge_applies_to": ["deliverability_optimization", "communication_template_patterns", "multi_channel_coordination"],
+      "orbt_monitoring": ["deliverability_rates", "communication_uptime", "engagement_analytics"],
+      "battle_tested_solutions": ["email_reputation_management", "multi_channel_failover", "personalization_at_scale"]
+    },
+
+    "ai-ml-specialist": {
+      "agent_id": "ai-ml-specialist",
+      "level": 2,
+      "role": "artificial_intelligence_expert",
+      "status": "production_ready",
+      "description": "AI/ML integration expert working across all projects requiring intelligent features",
+      "tools": ["OpenAI_API", "Claude_API", "Google_AI", "Hugging_Face", "TensorFlow", "PyTorch", "LangChain"],
+      "specialties": ["OpenAI_cost_optimization", "multi_model_fallback_strategies", "AI_safety_implementation"],
+      "cross_project_reusability": "high_reusability_across_all_AI_enhanced_projects",
+      "institutional_knowledge_applies_to": ["AI_provider_optimization", "prompt_engineering_patterns", "cost_optimization_techniques"],
+      "orbt_monitoring": ["AI_API_availability", "cost_tracking", "output_quality_consistency"],
+      "battle_tested_solutions": ["ai_cost_optimization_strategies", "multi_model_orchestration", "ai_safety_and_content_filtering"]
+    }
+  },
+
+  "// BATTLE-TESTED LEGACY SPECIALISTS": "Proven solutions from production systems",
+  "legacy_battle_tested_agents": {
     "render-database-specialist": {
       "agent_id": "render-database-specialist",
-      "level": 3, 
-      "status": "battle_tested",
-      "description": "Multi-database specialist for Firebase, BigQuery, Neon via Render endpoints",
-      "solves": [
-        "Render endpoint configuration for multiple DB types",
-        "Environment variable management across databases",
-        "Connection pooling and security patterns",
-        "Database-specific authentication flows"
-      ],
-      "supported_databases": {
-        "firebase": {
-          "connection_type": "REST API + Admin SDK",
-          "auth_method": "Service account + Firebase Auth",
-          "common_use_cases": ["user_data", "real_time", "file_storage"]
-        },
-        "bigquery": {
-          "connection_type": "Google Cloud Client + REST API", 
-          "auth_method": "Service account JSON",
-          "common_use_cases": ["analytics", "data_warehouse", "reporting"]
-        },
-        "neon": {
-          "connection_type": "PostgreSQL connection string",
-          "auth_method": "Database credentials + connection pooling",
-          "common_use_cases": ["transactional_data", "user_accounts", "business_logic"]
-        }
-      },
-      "file_location": "agents/global/specialists/render-database-specialist.md",
-      "when_to_use": "Need to connect any database type through Render endpoints",
-      "problems_solved": {
-        "environment_config_hell": "Proven env var patterns for each DB type",
-        "connection_failures": "Battle-tested connection retry and pooling",
-        "auth_nightmares": "Working authentication patterns for each platform",
-        "cors_and_security": "Proper CORS + security headers for database endpoints"
-      },
-      "project_types": ["multi_database_apps", "data_heavy_saas", "analytics_platforms"]
+      "integration_status": "integrated_into_database_specialist",
+      "description": "Multi-database integration through production Render endpoints",
+      "proven_solutions": ["Firebase_SPVPET_integration", "BigQuery_STACKED_integration", "Neon_STAMPED_integration"],
+      "render_endpoints": [
+        "https://render-command-ops-connection.onrender.com",
+        "https://render-marketing-db.onrender.com", 
+        "https://render-student-profile.onrender.com",
+        "https://render-real-estate.onrender.com"
+      ]
     },
 
-    "openai-cost-optimizer": {
-      "agent_id": "openai-cost-optimizer",
-      "level": 3,
-      "status": "needs_creation", 
-      "description": "OpenAI integration with cost controls and prompt optimization",
-      "solves": [
-        "Token usage explosion",
-        "Prompt engineering best practices",
-        "Rate limit handling",
-        "Cost monitoring and alerts"
-      ],
-      "file_location": "agents/global/specialists/openai-cost-optimizer.md",
-      "when_to_use": "AI-powered apps that need cost control",
-      "problems_solved": {
-        "runaway_costs": "Built-in usage limits and monitoring",
-        "inefficient_prompts": "Optimized prompts for common tasks",
-        "rate_limit_errors": "Automatic retry with exponential backoff"
-      },
-      "project_types": ["ai_apps", "chatbots", "content_generation"]
+    "render-lovable-integrator": {
+      "agent_id": "render-lovable-integrator", 
+      "integration_status": "integrated_into_deployment_specialist",
+      "description": "Proven CORS configuration for Lovable.dev projects on Render",
+      "proven_solutions": ["battle_tested_cors_configuration", "lovable_metadata_cleanup", "render_deployment_optimization"],
+      "cli_tools": ["delovable", "next-lovable"]
     },
 
     "orbt-monitor": {
       "agent_id": "orbt-monitor",
-      "level": 3,
-      "status": "battle_tested",
-      "description": "Real-time ORBT monitoring, global error logging, and automated escalation",
-      "solves": [
-        "Global error logging per Universal Rule 4",
-        "Real-time system status monitoring",
-        "Agent performance metrics tracking",
-        "Automated escalation per Universal Rule 5",
-        "Training log capture per Universal Rule 6"
-      ],
-      "integrates_with": ["command_ops_database", "orbt_error_log", "escalation_system"],
-      "file_location": "agents/global/specialists/orbt-monitor.md",
-      "when_to_use": "Production systems requiring ORBT compliance and monitoring",
-      "problems_solved": {
-        "monitoring_blindness": "Real-time dashboard with Green/Yellow/Red status",
-        "error_scatter": "Centralized global error logging with unique IDs",
-        "escalation_delays": "Automated 2+ occurrence escalation with notifications",
-        "performance_gaps": "Agent metrics tracking and performance analysis",
-        "training_gaps": "Automated training log capture and pattern recognition"
-      },
-      "features": [
-        "Real-time ORBT dashboard",
-        "Global error log with 6-position unique IDs",
-        "Automatic escalation system with Slack/email notifications",
-        "Agent performance metrics collection",
-        "Training intervention logging",
-        "Pattern recognition and auto-repair suggestions"
-      ],
-      "project_types": ["production_systems", "orbt_compliant", "monitored_deployments"]
+      "integration_status": "integrated_into_monitoring_specialist", 
+      "description": "Real-time ORBT monitoring with 3-strike escalation and global error logging",
+      "proven_solutions": ["3_strike_escalation_automation", "global_error_logging", "institutional_knowledge_integration"],
+      "orbt_features": ["real_time_dashboard", "automated_escalation", "performance_tracking", "training_logs"]
     }
   },
 
-  "// USAGE INSTRUCTIONS": "",
-  "how_to_use_global_agents": {
-    "step_1": "Custom GPT checks this catalog for relevant agents",
-    "step_2": "If match found, use existing agent with proven solutions", 
-    "step_3": "If no match, create new agent and consider adding to global catalog",
-    "step_4": "Claude Code pulls agent definition from file_location"
+  "// INSTITUTIONAL KNOWLEDGE INTEGRATION": "How specialists learn and improve across projects",
+  "institutional_knowledge": {
+    "knowledge_capture": "automatically_document_successful_solutions_from_all_specialists",
+    "pattern_recognition": "identify_recurring_problems_and_proven_solution_patterns", 
+    "cross_project_learning": "apply_solutions_from_previous_projects_to_new_similar_problems",
+    "3_strike_enhancement": "specialists_use_institutional_knowledge_for_strike_1_auto_fixes",
+    "continuous_improvement": "system_becomes_more_effective_with_every_project_completed"
   },
 
-  "agent_selection_priority": {
-    "1_first_choice": "Use battle_tested global agents when available",
-    "2_second_choice": "Customize global agents for specific project needs",
-    "3_last_resort": "Create new project-specific agents"
-  },
-
-  "// AGENT STATUS MEANINGS": "",
-  "status_definitions": {
-    "battle_tested": "Agent exists and has solved real problems in production",
-    "needs_creation": "Agent is planned but hasn't been built yet", 
-    "in_development": "Agent is being built/tested",
-    "deprecated": "Agent is outdated and shouldn't be used"
-  },
-
-  "// FOR CUSTOM GPT": "Use this section to select agents",
-  "selection_guide": {
-    "render_deployment": "Use render-lovable-integrator for Lovable.dev projects",
-    "saas_payments": "Use stripe-saas-handler for subscription businesses",
-    "database_integration": "Use render-database-specialist for Firebase/BigQuery/Neon connections",
-    "ai_integration": "Use openai-cost-optimizer for AI features"
-  },
-
-  "common_combinations": {
-    "saas_app": [
-      "render-lovable-integrator",
-      "stripe-saas-handler", 
-      "render-database-specialist"
-    ],
-    "ai_saas": [
-      "render-lovable-integrator",
-      "stripe-saas-handler",
-      "render-database-specialist", 
-      "openai-cost-optimizer"
-    ],
-    "analytics_platform": [
-      "render-database-specialist",
-      "render-lovable-integrator"
-    ],
-    "simple_deployment": [
-      "render-lovable-integrator"
-    ]
+  "// USAGE PATTERNS": "How to effectively use the skyscraper model",
+  "common_project_patterns": {
+    "simple_landing_page": {
+      "required_agents": ["master-orchestrator", "platform-orchestrator"], 
+      "specialists_assigned": ["deployment-specialist"],
+      "estimated_completion": "1-3_days_with_institutional_knowledge_application"
+    },
+    
+    "e_commerce_platform": {
+      "required_agents": ["master-orchestrator", "data-orchestrator", "payment-orchestrator", "platform-orchestrator"],
+      "specialists_assigned": ["database-specialist", "payment-specialist", "deployment-specialist", "monitoring-specialist"], 
+      "estimated_completion": "1-2_weeks_with_institutional_knowledge_and_proven_patterns"
+    },
+    
+    "saas_with_ai_features": {
+      "required_agents": ["master-orchestrator", "data-orchestrator", "payment-orchestrator", "integration-orchestrator", "platform-orchestrator"],
+      "specialists_assigned": ["database-specialist", "payment-specialist", "api-specialist", "ai-ml-specialist", "deployment-specialist", "monitoring-specialist"],
+      "estimated_completion": "2-3_weeks_with_full_institutional_knowledge_application"
+    },
+    
+    "data_collection_and_analysis": {
+      "required_agents": ["master-orchestrator", "data-orchestrator", "integration-orchestrator", "platform-orchestrator"],
+      "specialists_assigned": ["database-specialist", "scraper-specialist", "api-specialist", "ai-ml-specialist", "deployment-specialist"],
+      "estimated_completion": "1-2_weeks_with_proven_scraping_and_analysis_patterns"
+    }
   }
 }

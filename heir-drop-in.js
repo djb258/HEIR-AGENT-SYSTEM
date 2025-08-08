@@ -15,15 +15,19 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 Setting up HEIR Agent System...');
+console.log('🏗️ Setting up HEIR Agent System - Skyscraper Construction Model...');
 
-// Create directory structure
+// Create skyscraper directory structure
 const dirs = [
   '.claude',
   '.claude/agents',
-  '.claude/agents/orchestrators',
-  '.claude/agents/managers', 
-  '.claude/agents/specialists'
+  '.claude/agents/meta_system',
+  '.claude/agents/domain_orchestrators',
+  '.claude/agents/specialist_library',
+  '.heir',
+  '.heir/institutional_knowledge',
+  '.heir/orbt_logs',
+  '.heir/project_configs'
 ];
 
 dirs.forEach(dir => {
@@ -33,12 +37,13 @@ dirs.forEach(dir => {
   }
 });
 
-// Create project config template
+// Create skyscraper project config template
 const configTemplate = {
   "// PROJECT OVERVIEW": "=== FILL THIS OUT FIRST ===",
   "project_name": path.basename(process.cwd()),
   "project_description": "What you want to build in 1-2 sentences",
   "project_type": "simple/medium/complex - See examples",
+  "architecture_model": "skyscraper_construction",
   
   "// WHAT TO BUILD": "=== PROJECT REQUIREMENTS ===",
   "what_you_want": "Detailed description of what the end result should be",
@@ -60,29 +65,35 @@ const configTemplate = {
     "section_number_format": "[database].[subhive].[subsubhive].[section].[sequence]",
     "process_id_style": "Verb + Object (e.g., Load CSV, Generate Report)",
     "orbt_enabled": true,
+    "orbt_protocol": "3_strike_escalation_with_institutional_knowledge",
     "schema_enforcement": "STAMPED/SPVPET/STACKED",
-    "doctrine_enforcement_level": "strict"
+    "doctrine_enforcement_level": "strict",
+    "institutional_knowledge_enabled": true,
+    "cross_project_learning": true
   },
 
-  "// WHICH AGENTS TO USE": "=== AGENT ACTIVATION (set to true for needed agents) ===",
+  "// SKYSCRAPER CONSTRUCTION AGENTS": "=== AGENT ACTIVATION (set to true for needed agents) ===",
   "agents_needed": {
-    "// System Orchestrator": "DPR doctrine enforcement and ID management", 
+    "// LEVEL 0: Meta-System (Always Required)": "",
+    "master_orchestrator": {
+      "use_this_agent": true,
+      "role": "building_superintendent",
+      "why": "Always needed - coordinates all domain orchestrators like a construction superintendent"
+    },
+    
     "system_orchestrator": {
       "use_this_agent": true,
-      "why": "Always needed - enforces your DPR doctrine system"
+      "role": "dpr_doctrine_enforcement",
+      "why": "Always needed - enforces your DPR doctrine system across all agents"
     },
 
-    "// HEIR Claude Code Specialist": "Automates all Claude Code operations",
     "heir_claude_code_specialist": {
-      "use_this_agent": true, 
-      "why": "Always needed - handles all Claude Code syntax and HEIR system setup automatically"
+      "use_this_agent": true,
+      "role": "claude_code_automation", 
+      "why": "Always needed - automates all Claude Code operations and HEIR system setup"
     },
 
-    "// CEO Orchestrator": "Project coordination", 
-    "ceo_orchestrator": {
-      "use_this_agent": true,
-      "why": "Always needed - master coordinator"
-    },
+    "// LEVEL 1: Domain Orchestrators (Floor Managers)": "",
     
     "project_planner": {
       "use_this_agent": false,
@@ -225,17 +236,22 @@ if (fs.existsSync(gitignorePath)) {
   console.log('✅ Created .gitignore');
 }
 
-console.log('\n🎉 HEIR Agent System setup complete!');
-console.log('\n📋 Configuration Template Created:');
-console.log('✅ DPR doctrine system integration');
-console.log('✅ ORBT monitoring enabled by default');
-console.log('✅ System + HEIR Claude Code specialists always active');
+console.log('\n🏗️ HEIR Skyscraper Construction System setup complete!');
+console.log('\n📋 Skyscraper Configuration Template Created:');
+console.log('✅ Master Orchestrator (Building Superintendent) enabled');
+console.log('✅ DPR doctrine system with 3-Strike ORBT protocol');
+console.log('✅ Institutional knowledge system for cross-project learning');
+console.log('✅ Domain Orchestrators (Floor Managers) ready for assignment');
+console.log('✅ Specialist Library (Reusable Workforce Pool) configured');
 console.log('✅ Complete technical specification templates');
 console.log('\n🚀 Next steps:');
 console.log('1. Fill out heir-project-config.json with your project requirements');
-console.log('2. Activate needed agents (backend, integration, deployment, etc.)');
-console.log('3. Specify technical details for active agents only'); 
+console.log('2. Activate needed Domain Orchestrators (Data, Payment, Integration, Platform)');
+console.log('3. Specialists will be assigned automatically by Domain Orchestrators'); 
 console.log('4. Bring completed config to Claude Code with HEIR Claude Code Specialist');
-console.log('5. Say "Set up my HEIR project" - everything will be automated!');
-console.log('\n🎯 Project:', path.basename(process.cwd()));
-console.log('🎯 HEIR Version: 1.0.0 with complete monitoring & automation');
+console.log('5. Say "Set up my HEIR project" - complete skyscraper construction automated!');
+console.log('\n🏗️ Project:', path.basename(process.cwd()));
+console.log('🏗️ HEIR Version: 2.0.0 Skyscraper Construction Model');
+console.log('🧠 Features: Master Orchestrator + Domain Orchestrators + Specialist Library');
+console.log('⚡ Protocol: 3-Strike ORBT with Institutional Knowledge');
+console.log('🔄 Learning: Cross-project expertise that compounds over time');

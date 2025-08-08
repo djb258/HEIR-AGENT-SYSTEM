@@ -1,0 +1,478 @@
+{
+  "// HEIR SPECIALIST LIBRARY": "Reusable workforce pool - Same specialist works across multiple projects",
+  "version": "2.0.0",
+  "last_updated": "2025-08-08",
+  "philosophy": "Specialists are like skilled tradespeople - a plumber handles plumbing on any floor of any building",
+  
+  "specialist_library": {
+    "// DATABASE SPECIALISTS": "Data storage, queries, optimization across all database types",
+    "database-specialist": {
+      "tools": ["PostgreSQL", "MySQL", "MongoDB", "Neon", "Firebase", "BigQuery", "Supabase"],
+      "capabilities": [
+        "schema_design_and_optimization",
+        "query_performance_tuning",
+        "database_migrations_and_versioning",
+        "connection_pooling_configuration",
+        "serverless_database_optimization",
+        "data_integrity_and_validation",
+        "backup_and_recovery_systems"
+      ],
+      "use_for": [
+        "any_project_requiring_data_storage",
+        "database_performance_optimization",
+        "data_modeling_and_schema_design",
+        "database_security_implementation"
+      ],
+      "specialties": [
+        "STAMPED_schema_enforcement_for_Neon",
+        "SPVPET_schema_enforcement_for_Firebase", 
+        "STACKED_schema_enforcement_for_BigQuery",
+        "connection_pooling_for_serverless_architectures",
+        "cross_database_migration_strategies"
+      ],
+      "orbt_monitoring": [
+        "connection_failures_and_timeouts",
+        "slow_query_detection_and_optimization",
+        "data_integrity_violations",
+        "backup_failure_detection",
+        "capacity_planning_alerts"
+      ],
+      "institutional_knowledge_applies_to": [
+        "connection_pool_exhaustion_solutions",
+        "query_optimization_patterns_by_database_type",
+        "schema_migration_best_practices",
+        "disaster_recovery_procedures"
+      ],
+      "cross_project_reusability": "high_reusability_across_all_data_driven_projects"
+    },
+
+    "// PAYMENT SPECIALISTS": "Financial processing, billing, compliance across all payment providers",
+    "payment-specialist": {
+      "tools": ["Stripe", "PayPal", "Square", "Authorize.net", "Adyen", "Apple_Pay", "Google_Pay"],
+      "capabilities": [
+        "payment_gateway_integration_and_configuration",
+        "subscription_billing_and_management",
+        "webhook_handling_and_idempotency",
+        "fraud_detection_and_prevention",
+        "PCI_DSS_compliance_implementation",
+        "multi_currency_and_international_payments",
+        "refund_and_chargeback_management"
+      ],
+      "use_for": [
+        "any_project_requiring_payment_processing",
+        "e_commerce_platforms",
+        "subscription_based_services",
+        "marketplace_payment_flows"
+      ],
+      "specialties": [
+        "Stripe_webhook_security_and_reliability",
+        "subscription_proration_and_billing_cycles",
+        "marketplace_multi_party_payments",
+        "PCI_compliance_automation",
+        "fraud_detection_rule_optimization"
+      ],
+      "orbt_monitoring": [
+        "payment_failure_rate_tracking",
+        "webhook_delivery_failure_detection", 
+        "fraud_detection_false_positive_monitoring",
+        "PCI_compliance_violation_alerts",
+        "revenue_discrepancy_detection"
+      ],
+      "institutional_knowledge_applies_to": [
+        "webhook_retry_and_idempotency_patterns",
+        "subscription_billing_edge_case_handling",
+        "fraud_prevention_without_customer_friction",
+        "PCI_compliance_automation_strategies"
+      ],
+      "cross_project_reusability": "high_reusability_across_all_monetized_projects"
+    },
+
+    "// API SPECIALISTS": "External integrations, authentication, rate limiting across all API types",
+    "api-specialist": {
+      "tools": ["REST_APIs", "GraphQL", "SOAP", "WebSockets", "OAuth", "JWT", "API_Gateway_tools"],
+      "capabilities": [
+        "third_party_API_integration_and_management",
+        "authentication_and_authorization_systems",
+        "rate_limiting_and_quota_management",
+        "API_error_handling_and_retry_logic",
+        "data_transformation_and_validation",
+        "API_performance_monitoring_and_optimization",
+        "webhook_endpoint_creation_and_security"
+      ],
+      "use_for": [
+        "any_project_requiring_external_service_integration",
+        "building_internal_APIs_for_data_access",
+        "implementing_secure_authentication_systems",
+        "managing_third_party_service_dependencies"
+      ],
+      "specialties": [
+        "OAuth_2_0_and_OpenID_Connect_implementation",
+        "intelligent_rate_limiting_strategies",
+        "API_versioning_and_backward_compatibility",
+        "webhook_security_and_idempotency",
+        "multi_provider_API_failover_systems"
+      ],
+      "orbt_monitoring": [
+        "API_response_time_and_availability_tracking",
+        "rate_limit_quota_usage_monitoring",
+        "authentication_failure_detection",
+        "API_error_rate_and_pattern_analysis",
+        "third_party_service_outage_detection"
+      ],
+      "institutional_knowledge_applies_to": [
+        "API_provider_specific_quirks_and_solutions",
+        "optimal_retry_strategies_by_service_type",
+        "authentication_token_refresh_patterns",
+        "rate_limiting_optimization_by_usage_pattern"
+      ],
+      "cross_project_reusability": "very_high_reusability_across_all_integration_heavy_projects"
+    },
+
+    "// SCRAPER SPECIALISTS": "Data extraction, content monitoring, ethical scraping across all websites",
+    "scraper-specialist": {
+      "tools": ["Apify", "Puppeteer", "BeautifulSoup", "Selenium", "Firecrawl", "Scrapy", "Playwright"],
+      "capabilities": [
+        "ethical_web_scraping_and_data_extraction",
+        "anti_detection_and_bot_evasion_techniques",
+        "data_quality_validation_and_cleaning",
+        "large_scale_scraping_coordination",
+        "content_change_monitoring_and_alerting",
+        "PDF_and_document_parsing",
+        "competitive_intelligence_gathering"
+      ],
+      "use_for": [
+        "any_project_requiring_external_data_collection",
+        "competitive_analysis_and_monitoring",
+        "lead_generation_from_public_sources",
+        "content_aggregation_and_syndication"
+      ],
+      "specialties": [
+        "Apify_actor_development_and_optimization",
+        "JavaScript_heavy_site_scraping_with_Puppeteer",
+        "large_scale_data_extraction_coordination",
+        "ethical_scraping_compliance_and_rate_limiting",
+        "anti_detection_technique_selection_and_rotation"
+      ],
+      "orbt_monitoring": [
+        "scraping_success_rate_and_data_quality_tracking",
+        "IP_blocking_and_detection_alerts",
+        "data_freshness_and_completeness_monitoring",
+        "scraping_cost_and_efficiency_optimization",
+        "website_structure_change_detection"
+      ],
+      "institutional_knowledge_applies_to": [
+        "website_specific_scraping_strategies_and_solutions",
+        "anti_detection_technique_effectiveness_by_site_type",
+        "data_extraction_pattern_optimization",
+        "ethical_scraping_boundary_guidelines"
+      ],
+      "cross_project_reusability": "high_reusability_across_all_data_collection_projects"
+    },
+
+    "// DEPLOYMENT SPECIALISTS": "Infrastructure, hosting, CI/CD across all platforms",
+    "deployment-specialist": {
+      "tools": ["Render", "Vercel", "AWS", "Google_Cloud", "Docker", "Kubernetes", "GitHub_Actions", "GitLab_CI"],
+      "capabilities": [
+        "cloud_platform_configuration_and_optimization",
+        "CI_CD_pipeline_design_and_implementation",
+        "containerization_and_orchestration",
+        "auto_scaling_and_load_balancing_setup",
+        "environment_management_and_promotion",
+        "security_hardening_and_compliance",
+        "disaster_recovery_and_backup_systems"
+      ],
+      "use_for": [
+        "any_project_requiring_production_deployment",
+        "setting_up_development_and_staging_environments",
+        "implementing_automated_deployment_pipelines",
+        "ensuring_high_availability_and_scalability"
+      ],
+      "specialties": [
+        "Render_deployment_optimization_and_configuration",
+        "Vercel_serverless_function_and_edge_deployment",
+        "Docker_multi_stage_builds_and_optimization",
+        "Kubernetes_cluster_management_and_scaling",
+        "zero_downtime_deployment_strategies"
+      ],
+      "orbt_monitoring": [
+        "deployment_success_rate_and_time_tracking",
+        "application_performance_and_uptime_monitoring",
+        "resource_utilization_and_cost_optimization",
+        "security_vulnerability_scanning_and_alerting",
+        "backup_and_disaster_recovery_testing"
+      ],
+      "institutional_knowledge_applies_to": [
+        "platform_specific_deployment_optimization_strategies",
+        "cost_optimization_patterns_by_application_type",
+        "scaling_strategies_for_different_traffic_patterns",
+        "disaster_recovery_procedures_and_best_practices"
+      ],
+      "cross_project_reusability": "very_high_reusability_across_all_projects_requiring_infrastructure"
+    },
+
+    "// MONITORING SPECIALISTS": "System monitoring, alerting, performance tracking across all systems",
+    "monitoring-specialist": {
+      "tools": ["Custom_Dashboards", "Grafana", "Prometheus", "DataDog", "New_Relic", "Log_Analysis_Tools"],
+      "capabilities": [
+        "comprehensive_system_monitoring_setup",
+        "intelligent_alerting_and_notification_systems",
+        "performance_metrics_tracking_and_analysis",
+        "log_aggregation_and_analysis",
+        "predictive_alerting_and_anomaly_detection",
+        "SLA_monitoring_and_reporting",
+        "automated_incident_response_procedures"
+      ],
+      "use_for": [
+        "any_project_requiring_production_monitoring",
+        "performance_optimization_and_capacity_planning",
+        "proactive_issue_detection_and_resolution",
+        "compliance_and_audit_trail_maintenance"
+      ],
+      "specialties": [
+        "ORBT_protocol_monitoring_and_3_strike_escalation",
+        "real_time_dashboard_creation_and_optimization",
+        "predictive_alerting_based_on_usage_patterns",
+        "multi_system_correlation_and_root_cause_analysis",
+        "custom_metric_collection_and_visualization"
+      ],
+      "orbt_monitoring": [
+        "monitoring_system_health_and_availability",
+        "alert_fatigue_prevention_and_optimization",
+        "false_positive_rate_tracking_and_reduction",
+        "monitoring_cost_optimization",
+        "data_retention_and_compliance_management"
+      ],
+      "institutional_knowledge_applies_to": [
+        "optimal_alerting_thresholds_by_system_type",
+        "effective_dashboard_design_patterns",
+        "incident_response_automation_strategies",
+        "monitoring_cost_optimization_techniques"
+      ],
+      "cross_project_reusability": "maximum_reusability_across_all_production_systems"
+    },
+
+    "// COMMUNICATION SPECIALISTS": "Email, notifications, messaging across all communication channels",
+    "communication-specialist": {
+      "tools": ["SendGrid", "Mailgun", "Twilio", "Slack_API", "Discord_API", "Push_Notification_Services"],
+      "capabilities": [
+        "transactional_email_system_setup_and_optimization",
+        "marketing_email_campaign_automation",
+        "SMS_and_voice_notification_integration",
+        "push_notification_system_implementation",
+        "multi_channel_communication_orchestration",
+        "email_deliverability_optimization",
+        "communication_analytics_and_reporting"
+      ],
+      "use_for": [
+        "any_project_requiring_user_communication",
+        "marketing_automation_and_customer_engagement",
+        "system_alerting_and_notification_delivery",
+        "customer_support_and_feedback_collection"
+      ],
+      "specialties": [
+        "SendGrid_template_optimization_and_deliverability",
+        "multi_channel_notification_fallback_systems",
+        "personalized_communication_at_scale",
+        "email_reputation_management_and_warming",
+        "compliance_with_communication_regulations"
+      ],
+      "orbt_monitoring": [
+        "email_deliverability_rate_tracking",
+        "communication_system_uptime_monitoring",
+        "user_engagement_and_response_rate_analysis",
+        "communication_cost_optimization",
+        "spam_and_reputation_monitoring"
+      ],
+      "institutional_knowledge_applies_to": [
+        "email_deliverability_optimization_strategies",
+        "effective_communication_template_patterns",
+        "multi_channel_communication_orchestration",
+        "communication_compliance_and_best_practices"
+      ],
+      "cross_project_reusability": "high_reusability_across_all_user_facing_projects"
+    },
+
+    "// AI/ML SPECIALISTS": "AI integration, automation, intelligent systems across all AI providers",
+    "ai-ml-specialist": {
+      "tools": ["OpenAI_API", "Claude_API", "Google_AI", "Hugging_Face", "TensorFlow", "PyTorch", "LangChain"],
+      "capabilities": [
+        "AI_API_integration_and_optimization",
+        "prompt_engineering_and_optimization",
+        "AI_workflow_automation_and_orchestration",
+        "custom_model_training_and_deployment",
+        "intelligent_data_processing_and_analysis",
+        "AI_cost_optimization_and_token_management",
+        "AI_ethics_and_safety_implementation"
+      ],
+      "use_for": [
+        "any_project_requiring_AI_powered_features",
+        "content_generation_and_automation",
+        "intelligent_data_analysis_and_insights",
+        "customer_service_automation"
+      ],
+      "specialties": [
+        "OpenAI_API_optimization_and_cost_management",
+        "multi_model_fallback_and_optimization_strategies",
+        "AI_agent_orchestration_and_coordination",
+        "custom_AI_workflow_development",
+        "AI_safety_and_content_filtering"
+      ],
+      "orbt_monitoring": [
+        "AI_API_response_time_and_availability",
+        "AI_cost_tracking_and_optimization",
+        "AI_output_quality_and_consistency_monitoring",
+        "AI_safety_and_content_compliance_tracking",
+        "model_performance_and_drift_detection"
+      ],
+      "institutional_knowledge_applies_to": [
+        "AI_provider_specific_optimization_strategies",
+        "effective_prompt_engineering_patterns",
+        "AI_cost_optimization_techniques",
+        "AI_safety_and_ethics_implementation"
+      ],
+      "cross_project_reusability": "high_reusability_across_all_AI_enhanced_projects"
+    }
+  },
+
+  "// SPECIALIST ASSIGNMENT LOGIC": "How domain orchestrators select and assign specialists",
+  "assignment_patterns": {
+    "data_domain_assignments": {
+      "primary_specialist": "database-specialist",
+      "secondary_specialists": ["api-specialist", "monitoring-specialist"],
+      "assignment_triggers": [
+        "database_setup_required",
+        "data_API_endpoints_needed",
+        "data_performance_monitoring_required"
+      ]
+    },
+    
+    "payment_domain_assignments": {
+      "primary_specialist": "payment-specialist", 
+      "secondary_specialists": ["api-specialist", "communication-specialist"],
+      "assignment_triggers": [
+        "payment_processing_required",
+        "payment_API_integration_needed",
+        "payment_notification_system_required"
+      ]
+    },
+    
+    "integration_domain_assignments": {
+      "primary_specialist": "api-specialist",
+      "secondary_specialists": ["scraper-specialist", "monitoring-specialist"],
+      "assignment_triggers": [
+        "external_API_integration_required",
+        "web_scraping_needed",
+        "integration_monitoring_required"
+      ]
+    },
+    
+    "platform_domain_assignments": {
+      "primary_specialist": "deployment-specialist",
+      "secondary_specialists": ["monitoring-specialist", "communication-specialist"],
+      "assignment_triggers": [
+        "deployment_infrastructure_required",
+        "system_monitoring_needed",
+        "system_alerting_required"
+      ]
+    }
+  },
+
+  "// CROSS-PROJECT LEARNING": "How specialist knowledge transfers between projects",
+  "institutional_knowledge_system": {
+    "knowledge_capture": {
+      "successful_solutions": "automatically_documented_and_tagged_by_specialist_type",
+      "error_patterns": "catalogued_with_effective_resolution_strategies",
+      "performance_optimizations": "recorded_with_context_and_applicability",
+      "cost_optimizations": "tracked_with_ROI_and_implementation_complexity"
+    },
+    
+    "knowledge_application": {
+      "pattern_matching": "new_problems_matched_against_institutional_knowledge_database",
+      "solution_ranking": "proven_solutions_ranked_by_success_rate_and_context_similarity",
+      "automatic_application": "high_confidence_solutions_applied_automatically",
+      "human_escalation": "novel_problems_or_low_confidence_matches_escalated"
+    },
+    
+    "continuous_learning": {
+      "solution_effectiveness_tracking": "track_success_rate_of_applied_solutions",
+      "knowledge_base_refinement": "continuously_improve_knowledge_matching_accuracy",
+      "specialist_expertise_growth": "specialists_become_more_effective_over_time",
+      "cross_domain_knowledge_transfer": "solutions_from_one_domain_applied_to_similar_problems_in_other_domains"
+    }
+  },
+
+  "// 3-STRIKE ORBT ESCALATION": "How specialists handle errors and escalate to orchestrators",
+  "orbt_escalation_protocol": {
+    "strike_1_specialist_auto_fix": {
+      "approach": "specialist_attempts_proven_solution_from_institutional_knowledge",
+      "time_limit": "immediate_to_5_minutes_depending_on_problem_complexity",
+      "success_criteria": "problem_resolved_and_system_returns_to_normal_operation",
+      "documentation": "successful_resolution_documented_in_institutional_knowledge",
+      "escalation_trigger": "auto_fix_unsuccessful_or_problem_persists"
+    },
+    
+    "strike_2_orchestrator_alternative": {
+      "approach": "domain_orchestrator_tries_alternative_specialist_or_different_approach",
+      "time_limit": "5_to_30_minutes_depending_on_business_impact",
+      "success_criteria": "alternative_solution_resolves_issue_and_prevents_recurrence",
+      "documentation": "alternative_solution_documented_and_added_to_institutional_knowledge",
+      "escalation_trigger": "alternative_approach_unsuccessful_or_business_impact_escalating"
+    },
+    
+    "strike_3_master_orchestrator_human_escalation": {
+      "approach": "master_orchestrator_escalates_to_human_with_comprehensive_context",
+      "escalation_report": "detailed_problem_description_attempted_solutions_business_impact_assessment",
+      "human_decision_points": "approve_emergency_procedures_authorize_additional_resources_make_business_tradeoff_decisions",
+      "learning_integration": "human_resolution_documented_and_integrated_into_institutional_knowledge",
+      "prevention_measures": "root_cause_analysis_and_preventive_measures_implemented"
+    }
+  },
+
+  "// USAGE GUIDE": "How to effectively utilize the specialist library",
+  "specialist_selection_guide": {
+    "step_1_identify_domain_needs": "determine_which_domain_orchestrators_are_needed_for_project",
+    "step_2_map_technical_requirements": "identify_specific_technical_needs_within_each_domain",
+    "step_3_select_primary_specialists": "choose_main_specialist_for_each_domain_based_on_core_requirements",
+    "step_4_identify_secondary_specialists": "select_supporting_specialists_for_cross_domain_coordination",
+    "step_5_configure_orbt_monitoring": "set_up_appropriate_monitoring_and_alerting_for_each_specialist",
+    "step_6_establish_escalation_paths": "configure_3_strike_escalation_between_specialists_orchestrators_and_master_orchestrator"
+  },
+
+  "// COMMON PROJECT PATTERNS": "Proven specialist combinations for common project types",
+  "project_patterns": {
+    "simple_landing_page": {
+      "required_specialists": ["deployment-specialist"],
+      "optional_specialists": ["monitoring-specialist"],
+      "estimated_specialist_hours": "10-20_hours_total",
+      "common_challenges": "deployment_configuration_and_performance_optimization"
+    },
+    
+    "e_commerce_platform": {
+      "required_specialists": ["database-specialist", "payment-specialist", "deployment-specialist"],
+      "optional_specialists": ["api-specialist", "monitoring-specialist", "communication-specialist"],
+      "estimated_specialist_hours": "80-150_hours_total",
+      "common_challenges": "payment_security_database_performance_and_order_processing_reliability"
+    },
+    
+    "saas_with_subscriptions": {
+      "required_specialists": ["database-specialist", "payment-specialist", "api-specialist", "deployment-specialist"],
+      "optional_specialists": ["monitoring-specialist", "communication-specialist", "ai-ml-specialist"],
+      "estimated_specialist_hours": "120-250_hours_total",
+      "common_challenges": "subscription_billing_complexity_user_management_and_API_rate_limiting"
+    },
+    
+    "data_collection_and_analysis": {
+      "required_specialists": ["scraper-specialist", "database-specialist", "api-specialist"],
+      "optional_specialists": ["ai-ml-specialist", "monitoring-specialist", "deployment-specialist"],
+      "estimated_specialist_hours": "60-120_hours_total",
+      "common_challenges": "data_quality_scraping_reliability_and_analysis_accuracy"
+    },
+    
+    "ai_powered_application": {
+      "required_specialists": ["ai-ml-specialist", "database-specialist", "api-specialist", "deployment-specialist"],
+      "optional_specialists": ["monitoring-specialist", "communication-specialist", "payment-specialist"],
+      "estimated_specialist_hours": "100-200_hours_total",
+      "common_challenges": "AI_cost_optimization_response_quality_and_safety_compliance"
+    }
+  }
+}
