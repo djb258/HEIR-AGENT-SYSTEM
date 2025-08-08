@@ -54,9 +54,31 @@ const configTemplate = {
     "cannot_use": ["List any forbidden technologies"]
   },
 
+  "// DPR SYSTEM INTEGRATION": "=== YOUR DOCTRINE SYSTEM ===",
+  "dpr_system": {
+    "unique_id_format": "[DB].[SUBHIVE].[MICROPROCESS].[TOOL].[ALTITUDE].[STEP]",
+    "section_number_format": "[database].[subhive].[subsubhive].[section].[sequence]",
+    "process_id_style": "Verb + Object (e.g., Load CSV, Generate Report)",
+    "orbt_enabled": true,
+    "schema_enforcement": "STAMPED/SPVPET/STACKED",
+    "doctrine_enforcement_level": "strict"
+  },
+
   "// WHICH AGENTS TO USE": "=== AGENT ACTIVATION (set to true for needed agents) ===",
   "agents_needed": {
-    "// Always start with CEO": "CEO coordinates everything",
+    "// System Orchestrator": "DPR doctrine enforcement and ID management", 
+    "system_orchestrator": {
+      "use_this_agent": true,
+      "why": "Always needed - enforces your DPR doctrine system"
+    },
+
+    "// HEIR Claude Code Specialist": "Automates all Claude Code operations",
+    "heir_claude_code_specialist": {
+      "use_this_agent": true, 
+      "why": "Always needed - handles all Claude Code syntax and HEIR system setup automatically"
+    },
+
+    "// CEO Orchestrator": "Project coordination", 
     "ceo_orchestrator": {
       "use_this_agent": true,
       "why": "Always needed - master coordinator"
@@ -103,10 +125,16 @@ const configTemplate = {
       "scraping_targets": "What websites/data do you need?"
     },
     
+    "orbt_monitor": {
+      "use_this_agent": true,
+      "why": "Production systems need real-time monitoring and error logging",
+      "monitoring_requirements": "Real-time dashboard, global error logging, automated escalation"
+    },
+    
     "error_handling": {
       "use_this_agent": false,
-      "why": "Need advanced error handling and monitoring",
-      "error_requirements": "What kind of errors to catch/handle?"
+      "why": "Need advanced error handling and monitoring beyond ORBT",
+      "error_requirements": "What kind of specialized errors to catch/handle?"
     }
   },
 
@@ -128,15 +156,48 @@ const configTemplate = {
       "hosting_platform": "Preferred platform (Render, Vercel, etc.)",
       "environment_variables": "List any env vars needed",
       "monitoring_needs": "What should be monitored?"
+    },
+    
+    "database_details": {
+      "tables_needed": ["users", "payments", "logs"],
+      "relationships": "How are your data tables connected?",
+      "performance_needs": "Any specific performance requirements?"
+    },
+    
+    "payment_details": {
+      "payment_types": ["one-time", "subscription", "usage-based"],
+      "pricing_tiers": "Describe your pricing structure",
+      "webhook_handling": "What should happen when payments succeed/fail?"
+    },
+    
+    "scraping_details": {
+      "target_websites": ["List websites to scrape"],
+      "data_to_extract": "What specific data do you need?",
+      "scraping_frequency": "How often should this run?",
+      "ethical_limits": "Any scraping restrictions to follow?"
+    },
+    
+    "monitoring_details": {
+      "dashboard_enabled": true,
+      "error_log_retention": "30 days",
+      "escalation_channels": ["slack", "email"],
+      "orbt_compliance": true,
+      "performance_tracking": true,
+      "training_logs": true
     }
   },
 
   "system": {
-    "entry_point": "ceo-orchestrator",
+    "entry_point": "system-orchestrator",
+    "user_interface": "heir-claude-code-specialist",
+    "project_coordination": "ceo-orchestrator",
     "auto_repair": true,
+    "orbt_enabled": true,
+    "dpr_compliant": true,
     "session_tracking": true,
     "created_timestamp": new Date().toISOString(),
-    "project_root": process.cwd()
+    "project_root": process.cwd(),
+    "heir_version": "1.0.0"
   }
 };
 
@@ -165,8 +226,16 @@ if (fs.existsSync(gitignorePath)) {
 }
 
 console.log('\n🎉 HEIR Agent System setup complete!');
-console.log('\nNext steps:');
-console.log('1. Fill out heir-project-config.json with your requirements');
-console.log('2. Bring the completed config to Claude Code');
-console.log('3. Let HEIR agents build your system!');
-console.log('\nProject detected:', path.basename(process.cwd()));
+console.log('\n📋 Configuration Template Created:');
+console.log('✅ DPR doctrine system integration');
+console.log('✅ ORBT monitoring enabled by default');
+console.log('✅ System + HEIR Claude Code specialists always active');
+console.log('✅ Complete technical specification templates');
+console.log('\n🚀 Next steps:');
+console.log('1. Fill out heir-project-config.json with your project requirements');
+console.log('2. Activate needed agents (backend, integration, deployment, etc.)');
+console.log('3. Specify technical details for active agents only'); 
+console.log('4. Bring completed config to Claude Code with HEIR Claude Code Specialist');
+console.log('5. Say "Set up my HEIR project" - everything will be automated!');
+console.log('\n🎯 Project:', path.basename(process.cwd()));
+console.log('🎯 HEIR Version: 1.0.0 with complete monitoring & automation');

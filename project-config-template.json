@@ -92,10 +92,16 @@
       "scraping_targets": "What websites/data do you need?"
     },
     
+    "orbt_monitor": {
+      "use_this_agent": true,
+      "why": "Production systems need real-time monitoring and error logging",
+      "monitoring_requirements": "Real-time dashboard, global error logging, automated escalation"
+    },
+    
     "error_handling": {
       "use_this_agent": false,
-      "why": "Need advanced error handling and monitoring",
-      "error_requirements": "What kind of errors to catch/handle?"
+      "why": "Need advanced error handling and monitoring beyond ORBT",
+      "error_requirements": "What kind of specialized errors to catch/handle?"
     }
   },
 
@@ -138,6 +144,15 @@
       "data_to_extract": "What specific data do you need?",
       "scraping_frequency": "How often should this run?",
       "ethical_limits": "Any scraping restrictions to follow?"
+    },
+    
+    "monitoring_details": {
+      "dashboard_enabled": true,
+      "error_log_retention": "30 days",
+      "escalation_channels": ["slack", "email"],
+      "orbt_compliance": true,
+      "performance_tracking": true,
+      "training_logs": true
     }
   },
 
