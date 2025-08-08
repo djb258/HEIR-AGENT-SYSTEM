@@ -30,10 +30,16 @@
 
   "// WHICH AGENTS TO USE": "=== AGENT ACTIVATION (set to true for needed agents) ===",
   "agents_needed": {
-    "// System Orchestrator": "DPR doctrine enforcement and ID management",
+    "// System Orchestrator": "DPR doctrine enforcement and ID management", 
     "system_orchestrator": {
       "use_this_agent": true,
       "why": "Always needed - enforces your DPR doctrine system"
+    },
+
+    "// HEIR Claude Code Specialist": "Automates all Claude Code operations",
+    "heir_claude_code_specialist": {
+      "use_this_agent": true, 
+      "why": "Always needed - handles all Claude Code syntax and HEIR system setup automatically"
     },
 
     "// CEO Orchestrator": "Project coordination", 

@@ -15,6 +15,17 @@
       "enforces": ["STAMPED_SPVPET_STACKED_schema", "section_numbering", "process_id_format"]
     },
 
+    "heir-claude-code-specialist": {
+      "level": 0,
+      "description": "Expert Claude Code operations with complete HEIR system integration",
+      "when_to_use": "Always - automates all Claude Code commands and HEIR system setup",
+      "delegates_to": ["claude_code_system"],
+      "file_location": "agents/global/orchestrators/heir-claude-code-specialist.md",
+      "required_context": ["heir_project_config", "claude_code_expertise", "user_intent"],
+      "integrates_with": ["claude_code_cli", "heir_config_files", "mcp_tools"],
+      "automates": ["agent_creation", "hierarchy_setup", "tool_configuration", "orbt_compliance"]
+    },
+
     "ceo-orchestrator": {
       "level": 1,
       "description": "Master coordinator, vision setting, division management, final QA",
