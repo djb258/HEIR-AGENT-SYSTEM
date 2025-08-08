@@ -134,6 +134,39 @@
         "rate_limit_errors": "Automatic retry with exponential backoff"
       },
       "project_types": ["ai_apps", "chatbots", "content_generation"]
+    },
+
+    "orbt-monitor": {
+      "agent_id": "orbt-monitor",
+      "level": 3,
+      "status": "battle_tested",
+      "description": "Real-time ORBT monitoring, global error logging, and automated escalation",
+      "solves": [
+        "Global error logging per Universal Rule 4",
+        "Real-time system status monitoring",
+        "Agent performance metrics tracking",
+        "Automated escalation per Universal Rule 5",
+        "Training log capture per Universal Rule 6"
+      ],
+      "integrates_with": ["command_ops_database", "orbt_error_log", "escalation_system"],
+      "file_location": "agents/global/specialists/orbt-monitor.md",
+      "when_to_use": "Production systems requiring ORBT compliance and monitoring",
+      "problems_solved": {
+        "monitoring_blindness": "Real-time dashboard with Green/Yellow/Red status",
+        "error_scatter": "Centralized global error logging with unique IDs",
+        "escalation_delays": "Automated 2+ occurrence escalation with notifications",
+        "performance_gaps": "Agent metrics tracking and performance analysis",
+        "training_gaps": "Automated training log capture and pattern recognition"
+      },
+      "features": [
+        "Real-time ORBT dashboard",
+        "Global error log with 6-position unique IDs",
+        "Automatic escalation system with Slack/email notifications",
+        "Agent performance metrics collection",
+        "Training intervention logging",
+        "Pattern recognition and auto-repair suggestions"
+      ],
+      "project_types": ["production_systems", "orbt_compliant", "monitored_deployments"]
     }
   },
 
