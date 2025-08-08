@@ -4,6 +4,17 @@
   "last_updated": "2025-08-08",
   
   "orchestrators": {
+    "system-orchestrator": {
+      "level": 1,
+      "description": "DPR doctrine enforcement, unique ID generation, ORBT protocol implementation", 
+      "when_to_use": "Always - enforces your complete DPR system across all agents",
+      "delegates_to": ["all_agents"],
+      "file_location": "agents/global/orchestrators/system-orchestrator.md",
+      "required_context": ["dpr_system", "unique_id_requirements", "orbt_settings"],
+      "integrates_with": ["command_ops_database", "doctrine_table"],
+      "enforces": ["STAMPED_SPVPET_STACKED_schema", "section_numbering", "process_id_format"]
+    },
+
     "ceo-orchestrator": {
       "level": 1,
       "description": "Master coordinator, vision setting, division management, final QA",

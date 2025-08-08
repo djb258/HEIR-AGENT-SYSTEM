@@ -18,9 +18,25 @@
     "cannot_use": ["List any forbidden technologies"]
   },
 
+  "// DPR SYSTEM INTEGRATION": "=== YOUR DOCTRINE SYSTEM ===",
+  "dpr_system": {
+    "unique_id_format": "[DB].[SUBHIVE].[MICROPROCESS].[TOOL].[ALTITUDE].[STEP]",
+    "section_number_format": "[database].[subhive].[subsubhive].[section].[sequence]",
+    "process_id_style": "Verb + Object (e.g., Load CSV, Generate Report)",
+    "orbt_enabled": true,
+    "schema_enforcement": "STAMPED/SPVPET/STACKED",
+    "doctrine_enforcement_level": "strict|required|optional - Choose enforcement level"
+  },
+
   "// WHICH AGENTS TO USE": "=== AGENT ACTIVATION (set to true for needed agents) ===",
   "agents_needed": {
-    "// Always start with CEO": "CEO coordinates everything",
+    "// System Orchestrator": "DPR doctrine enforcement and ID management",
+    "system_orchestrator": {
+      "use_this_agent": true,
+      "why": "Always needed - enforces your DPR doctrine system"
+    },
+
+    "// CEO Orchestrator": "Project coordination", 
     "ceo_orchestrator": {
       "use_this_agent": true,
       "why": "Always needed - master coordinator"
