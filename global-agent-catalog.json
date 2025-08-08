@@ -1,0 +1,190 @@
+{
+  "// GLOBAL AGENT CATALOG": "Battle-tested agents with proven solutions",
+  "description": "These agents contain hard-won knowledge and debugged solutions",
+  "version": "1.0.0",
+  "last_updated": "2025-08-08",
+
+  "global_agents": {
+    "// DEPLOYMENT SPECIALISTS": "Proven deployment solutions",
+    
+    "render-lovable-integrator": {
+      "agent_id": "render-lovable-integrator",
+      "level": 3,
+      "status": "battle_tested",
+      "description": "Deploy React apps to Render with Lovable.dev - CORS issues pre-solved + CLI tools",
+      "solves": [
+        "CORS configuration headaches",
+        "Render + Lovable.dev integration",
+        "Environment variable setup",
+        "Build process optimization",
+        "Lovable metadata cleanup with delovable CLI"
+      ],
+      "cli_tools": ["delovable", "next-lovable"],
+      "file_location": "agents/global/specialists/render-lovable-integrator.md",
+      "when_to_use": "Deploying Lovable.dev projects to Render",
+      "problems_solved": {
+        "cors_nightmare": "Pre-configured CORS headers that actually work",
+        "build_failures": "Proven build scripts and env var setup",
+        "deployment_loops": "Step-by-step deployment that works first try",
+        "lovable_metadata": "Automatic cleanup with delovable CLI tool"
+      },
+      "project_types": ["react_apps", "lovable_projects", "render_deployments"]
+    },
+
+    "nextjs-migration-specialist": {
+      "agent_id": "nextjs-migration-specialist",
+      "level": 3,
+      "status": "battle_tested",
+      "description": "Migrate Lovable.dev projects to Next.js and deploy to Vercel/Netlify",
+      "solves": [
+        "Lovable.dev to Next.js migration",
+        "Next.js configuration optimization",
+        "Vercel/Netlify deployment setup",
+        "API integration with existing Render endpoints",
+        "Static export configuration"
+      ],
+      "cli_tools": ["next-lovable", "delovable", "vercel", "netlify-cli"],
+      "file_location": "agents/global/specialists/nextjs-migration-specialist.md",
+      "when_to_use": "Need to migrate Lovable.dev projects to Next.js framework",
+      "problems_solved": {
+        "migration_complexity": "Automated migration with next-lovable CLI",
+        "api_integration": "Seamless integration with existing Render database endpoints",
+        "deployment_options": "Support for Vercel, Netlify, and static hosting",
+        "configuration_issues": "Optimized Next.js config for migrated projects"
+      },
+      "project_types": ["nextjs_apps", "lovable_migrations", "vercel_deployments", "netlify_deployments"]
+    },
+
+    "stripe-saas-handler": {
+      "agent_id": "stripe-saas-handler", 
+      "level": 3,
+      "status": "needs_creation",
+      "description": "Complete SaaS payment flows with Stripe - webhook debugging done",
+      "solves": [
+        "Webhook signature verification",
+        "Subscription lifecycle management", 
+        "Failed payment recovery",
+        "Proration calculations"
+      ],
+      "file_location": "agents/global/specialists/stripe-saas-handler.md",
+      "when_to_use": "SaaS apps with subscription billing",
+      "problems_solved": {
+        "webhook_failures": "Proper webhook handling with retry logic",
+        "subscription_edge_cases": "Handles upgrades, downgrades, cancellations",
+        "payment_recovery": "Automated dunning and recovery flows"
+      },
+      "project_types": ["saas_apps", "subscription_business", "recurring_billing"]
+    },
+
+    "render-database-specialist": {
+      "agent_id": "render-database-specialist",
+      "level": 3, 
+      "status": "battle_tested",
+      "description": "Multi-database specialist for Firebase, BigQuery, Neon via Render endpoints",
+      "solves": [
+        "Render endpoint configuration for multiple DB types",
+        "Environment variable management across databases",
+        "Connection pooling and security patterns",
+        "Database-specific authentication flows"
+      ],
+      "supported_databases": {
+        "firebase": {
+          "connection_type": "REST API + Admin SDK",
+          "auth_method": "Service account + Firebase Auth",
+          "common_use_cases": ["user_data", "real_time", "file_storage"]
+        },
+        "bigquery": {
+          "connection_type": "Google Cloud Client + REST API", 
+          "auth_method": "Service account JSON",
+          "common_use_cases": ["analytics", "data_warehouse", "reporting"]
+        },
+        "neon": {
+          "connection_type": "PostgreSQL connection string",
+          "auth_method": "Database credentials + connection pooling",
+          "common_use_cases": ["transactional_data", "user_accounts", "business_logic"]
+        }
+      },
+      "file_location": "agents/global/specialists/render-database-specialist.md",
+      "when_to_use": "Need to connect any database type through Render endpoints",
+      "problems_solved": {
+        "environment_config_hell": "Proven env var patterns for each DB type",
+        "connection_failures": "Battle-tested connection retry and pooling",
+        "auth_nightmares": "Working authentication patterns for each platform",
+        "cors_and_security": "Proper CORS + security headers for database endpoints"
+      },
+      "project_types": ["multi_database_apps", "data_heavy_saas", "analytics_platforms"]
+    },
+
+    "openai-cost-optimizer": {
+      "agent_id": "openai-cost-optimizer",
+      "level": 3,
+      "status": "needs_creation", 
+      "description": "OpenAI integration with cost controls and prompt optimization",
+      "solves": [
+        "Token usage explosion",
+        "Prompt engineering best practices",
+        "Rate limit handling",
+        "Cost monitoring and alerts"
+      ],
+      "file_location": "agents/global/specialists/openai-cost-optimizer.md",
+      "when_to_use": "AI-powered apps that need cost control",
+      "problems_solved": {
+        "runaway_costs": "Built-in usage limits and monitoring",
+        "inefficient_prompts": "Optimized prompts for common tasks",
+        "rate_limit_errors": "Automatic retry with exponential backoff"
+      },
+      "project_types": ["ai_apps", "chatbots", "content_generation"]
+    }
+  },
+
+  "// USAGE INSTRUCTIONS": "",
+  "how_to_use_global_agents": {
+    "step_1": "Custom GPT checks this catalog for relevant agents",
+    "step_2": "If match found, use existing agent with proven solutions", 
+    "step_3": "If no match, create new agent and consider adding to global catalog",
+    "step_4": "Claude Code pulls agent definition from file_location"
+  },
+
+  "agent_selection_priority": {
+    "1_first_choice": "Use battle_tested global agents when available",
+    "2_second_choice": "Customize global agents for specific project needs",
+    "3_last_resort": "Create new project-specific agents"
+  },
+
+  "// AGENT STATUS MEANINGS": "",
+  "status_definitions": {
+    "battle_tested": "Agent exists and has solved real problems in production",
+    "needs_creation": "Agent is planned but hasn't been built yet", 
+    "in_development": "Agent is being built/tested",
+    "deprecated": "Agent is outdated and shouldn't be used"
+  },
+
+  "// FOR CUSTOM GPT": "Use this section to select agents",
+  "selection_guide": {
+    "render_deployment": "Use render-lovable-integrator for Lovable.dev projects",
+    "saas_payments": "Use stripe-saas-handler for subscription businesses",
+    "database_integration": "Use render-database-specialist for Firebase/BigQuery/Neon connections",
+    "ai_integration": "Use openai-cost-optimizer for AI features"
+  },
+
+  "common_combinations": {
+    "saas_app": [
+      "render-lovable-integrator",
+      "stripe-saas-handler", 
+      "render-database-specialist"
+    ],
+    "ai_saas": [
+      "render-lovable-integrator",
+      "stripe-saas-handler",
+      "render-database-specialist", 
+      "openai-cost-optimizer"
+    ],
+    "analytics_platform": [
+      "render-database-specialist",
+      "render-lovable-integrator"
+    ],
+    "simple_deployment": [
+      "render-lovable-integrator"
+    ]
+  }
+}

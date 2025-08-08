@@ -1,0 +1,193 @@
+{
+  "// HEIR AGENT CATALOG": "Complete list of all available agents",
+  "version": "1.0.0",
+  "last_updated": "2025-08-08",
+  
+  "orchestrators": {
+    "ceo-orchestrator": {
+      "level": 1,
+      "description": "Master coordinator, vision setting, division management, final QA",
+      "when_to_use": "Always - coordinates all projects",
+      "delegates_to": ["managers", "project-planner"],
+      "file_location": "agents/orchestrators/ceo-orchestrator.md",
+      "required_context": ["project_vision", "success_criteria", "constraints"]
+    },
+    
+    "project-planner": {
+      "level": 1, 
+      "description": "Complex projects, multi-hive coordination, dependencies, resource management",
+      "when_to_use": "Complex projects with multiple phases and dependencies",
+      "delegates_to": ["all_managers"],
+      "file_location": "agents/orchestrators/project-planner.md",
+      "required_context": ["project_phases", "dependencies", "resource_allocation"]
+    }
+  },
+
+  "managers": {
+    "backend-manager": {
+      "level": 2,
+      "description": "API design, database work, auth systems, server logic",
+      "when_to_use": "Need APIs, databases, authentication, or server-side logic",
+      "delegates_to": ["neon-integrator", "auth-specialist", "api-designer"],
+      "file_location": "agents/managers/backend-manager.md",
+      "required_context": ["database_requirements", "api_specifications", "auth_needs"]
+    },
+
+    "integration-manager": {
+      "level": 2,
+      "description": "External APIs, scraping coordination, data pipelines, rate limiting", 
+      "when_to_use": "Need to connect external services or scrape data",
+      "delegates_to": ["apify-integrator", "firecrawl-scraper", "api-connector"],
+      "file_location": "agents/managers/integration-manager.md",
+      "required_context": ["external_apis", "data_pipelines", "rate_limits"]
+    },
+
+    "deployment-manager": {
+      "level": 2,
+      "description": "Platform operations, infrastructure, monitoring, CI/CD setup",
+      "when_to_use": "Need hosting, deployment, or infrastructure management", 
+      "delegates_to": ["render-deployer", "vercel-deployer", "monitoring-specialist"],
+      "file_location": "agents/managers/deployment-manager.md",
+      "required_context": ["target_platforms", "infrastructure_needs", "monitoring_requirements"]
+    },
+
+    "frontend-manager": {
+      "level": 2,
+      "description": "UI/UX coordination, component architecture, state management",
+      "when_to_use": "Building user interfaces or web applications",
+      "delegates_to": ["react-specialist", "nextjs-specialist", "ui-designer"],
+      "file_location": "agents/managers/frontend-manager.md", 
+      "required_context": ["ui_requirements", "user_flows", "design_preferences"]
+    }
+  },
+
+  "specialists": {
+    "// DATABASE SPECIALISTS": "",
+    "neon-integrator": {
+      "level": 3,
+      "description": "Database connections, query optimization, pool configuration",
+      "when_to_use": "Need PostgreSQL database with Neon",
+      "tools": ["Neon Console", "SQL", "Connection pooling"],
+      "file_location": "agents/specialists/neon-integrator.md",
+      "required_context": ["database_schema", "connection_requirements", "performance_needs"]
+    },
+
+    "supabase-integrator": {
+      "level": 3, 
+      "description": "Supabase setup, auth, real-time subscriptions, storage",
+      "when_to_use": "Need full-stack backend with Supabase",
+      "tools": ["Supabase CLI", "Auth", "Real-time", "Storage"],
+      "file_location": "agents/specialists/supabase-integrator.md",
+      "required_context": ["auth_requirements", "realtime_needs", "storage_requirements"]
+    },
+
+    "// PAYMENT SPECIALISTS": "",
+    "stripe-handler": {
+      "level": 3,
+      "description": "Payment flows, webhook setup, subscription management", 
+      "when_to_use": "Need payment processing with Stripe",
+      "tools": ["Stripe API", "Webhooks", "Checkout", "Billing"],
+      "file_location": "agents/specialists/stripe-handler.md",
+      "required_context": ["payment_flows", "subscription_models", "webhook_endpoints"]
+    },
+
+    "// SCRAPING SPECIALISTS": "",
+    "apify-integrator": {
+      "level": 3,
+      "description": "Actor setup, data extraction, rate limits, data transformation",
+      "when_to_use": "Need web scraping with Apify platform", 
+      "tools": ["Apify Console", "Actors", "Datasets", "Proxy rotation"],
+      "file_location": "agents/specialists/apify-integrator.md",
+      "required_context": ["extraction_targets", "transformation_rules", "rate_limits"]
+    },
+
+    "firecrawl-scraper": {
+      "level": 3,
+      "description": "Web scraping, data cleaning, ethical scraping",
+      "when_to_use": "Need simple web scraping with Firecrawl",
+      "tools": ["Firecrawl API", "Content extraction", "Link following"],
+      "file_location": "agents/specialists/firecrawl-scraper.md", 
+      "required_context": ["target_websites", "extraction_patterns", "ethical_constraints"]
+    },
+
+    "// DEPLOYMENT SPECIALISTS": "",
+    "render-deployer": {
+      "level": 3,
+      "description": "Platform configuration, environment setup, health checks",
+      "when_to_use": "Deploy to Render platform",
+      "tools": ["Render Dashboard", "Environment vars", "Health checks", "Logs"],
+      "file_location": "agents/specialists/render-deployer.md",
+      "required_context": ["app_configuration", "environment_variables", "health_checks"]
+    },
+
+    "vercel-deployer": {
+      "level": 3,
+      "description": "Next.js deployment, serverless functions, edge configuration",
+      "when_to_use": "Deploy Next.js or static sites to Vercel",
+      "tools": ["Vercel CLI", "Serverless functions", "Edge config", "Analytics"],
+      "file_location": "agents/specialists/vercel-deployer.md",
+      "required_context": ["deployment_config", "serverless_needs", "domain_setup"]
+    },
+
+    "// AI/ML SPECIALISTS": "",
+    "openai-integrator": {
+      "level": 3,
+      "description": "OpenAI API integration, prompt engineering, token optimization",
+      "when_to_use": "Need AI capabilities with OpenAI",
+      "tools": ["OpenAI API", "GPT models", "Embeddings", "Fine-tuning"],
+      "file_location": "agents/specialists/openai-integrator.md",
+      "required_context": ["ai_requirements", "model_selection", "prompt_strategies"]
+    },
+
+    "// COMMUNICATION SPECIALISTS": "",
+    "sendgrid-handler": {
+      "level": 3,
+      "description": "Email templates, delivery optimization, analytics tracking",
+      "when_to_use": "Need transactional or marketing emails",
+      "tools": ["SendGrid API", "Templates", "Analytics", "Suppressions"],
+      "file_location": "agents/specialists/sendgrid-handler.md", 
+      "required_context": ["email_types", "template_needs", "delivery_requirements"]
+    },
+
+    "// MONITORING SPECIALISTS": "", 
+    "error-analyst": {
+      "level": 3,
+      "description": "3-strike rule, pattern recognition, auto-repair, FAQ updates",
+      "when_to_use": "Need advanced error handling and system monitoring",
+      "tools": ["Logging", "Error tracking", "Pattern analysis", "Auto-repair"],
+      "file_location": "agents/specialists/error-analyst.md",
+      "required_context": ["error_patterns", "retry_strategies", "escalation_rules"]
+    }
+  },
+
+  "// AGENT CREATION TEMPLATES": "",
+  "templates": {
+    "custom-specialist-template": {
+      "description": "Template for creating new specialist agents",
+      "file_location": "agents/templates/specialist-template.md",
+      "usage": "Copy and customize for domain-specific specialists"
+    },
+    
+    "custom-manager-template": {
+      "description": "Template for creating new manager agents", 
+      "file_location": "agents/templates/manager-template.md",
+      "usage": "Copy and customize for new management domains"
+    }
+  },
+
+  "// USAGE GUIDE": "",
+  "how_to_select_agents": {
+    "step_1": "Start with ceo-orchestrator (always required)",
+    "step_2": "Identify your project domains (backend, frontend, integrations, deployment)",
+    "step_3": "Select appropriate managers for each domain",
+    "step_4": "Let managers delegate to specific specialists based on technical requirements",
+    "step_5": "Add error-analyst for production systems"
+  },
+
+  "common_patterns": {
+    "simple_landing_page": ["ceo-orchestrator", "frontend-manager", "vercel-deployer"],
+    "saas_with_payments": ["ceo-orchestrator", "backend-manager", "neon-integrator", "stripe-handler", "deployment-manager"],
+    "data_collection_system": ["ceo-orchestrator", "integration-manager", "apify-integrator", "backend-manager", "neon-integrator"],
+    "ai_powered_app": ["ceo-orchestrator", "backend-manager", "openai-integrator", "frontend-manager", "deployment-manager"]
+  }
+}
