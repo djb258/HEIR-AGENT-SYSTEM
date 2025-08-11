@@ -1,11 +1,29 @@
 # HEIR Agent System - Skyscraper Construction Model
 
 ## Overview
-The HEIR (Hierarchical Execution Intelligence & Repair) Agent System transforms Claude Code from a single assistant into a **coordinated development organization** using the skyscraper construction model. Like a construction company with a Building Superintendent, Floor Managers, and skilled tradespeople who work on multiple buildings, HEIR creates specialized teams with reusable expertise.
+The **HEIR (Hierarchical Execution Intelligence & Repair)** Agent System transforms Claude Code from a single assistant into a **coordinated development organization** using the skyscraper construction model. Like a construction company with a Building Superintendent, Floor Managers, and skilled tradespeople who work on multiple buildings, HEIR creates specialized teams with reusable expertise.
 
-**Core Philosophy**: "AI builds automation that runs independently" - Create systems that work without ongoing AI dependency.
+## The HEIR Philosophy
 
-**Skyscraper Model**: Specialists are like skilled tradespeople - a plumber handles plumbing on any floor of any building. The building project changes, but the plumber's expertise remains constant and grows with experience.
+### What HEIR Stands For:
+- **H**ierarchical: The skyscraper architecture (Master Orchestrator → Domain Orchestrators → Specialists)
+- **E**xecution: Actually getting shit done, not just planning or theorizing  
+- **I**ntelligence: Smart coordination and institutional knowledge that gets better over time
+- **& R**epair: The ORBT system with 3-strike escalation and self-healing capabilities
+
+### What HEIR Means:
+**HEIR** also implies the deeper philosophy of building lasting value:
+- **Inheritance**: Each project inherits knowledge from previous ones
+- **Legacy**: Building systems that outlast their creators
+- **Succession**: Passing expertise down through the hierarchy  
+- **Valuable Heritage**: The system becomes more valuable over time
+
+**You're not just getting an AI system - you're getting an HEIR system that builds institutional wealth.**
+
+### Core Philosophy
+- **AI builds automation that runs independently** - Create systems that work without ongoing AI dependency
+- **Digital Dynasty Building** - Each project adds to your institutional HEIR
+- **Inherited Intelligence** - Every solution becomes permanent organizational capability
 
 ## Skyscraper Construction Architecture
 
@@ -164,7 +182,7 @@ The HEIR system transforms complex software development into simple conversation
 
 **The HEIR Advantage**: Like a construction company that becomes legendary for quality and speed, the HEIR system builds institutional expertise that compounds over time, making each project better than the last.
 
-**Bottom Line**: Transform your business into a learning organization where AI builds institutional intelligence, not just individual solutions.
+**Bottom Line**: Transform your business into a learning organization where AI builds institutional intelligence, not just individual solutions. You're not just automating - you're creating a digital dynasty that appreciates in value.
 
 ## Technical Architecture Details
 
@@ -194,6 +212,14 @@ The HEIR system transforms complex software development into simple conversation
 
 ---
 
+## HEIR: Your Digital Dynasty
+
 *Built with the "Toilet Revelation" principle: Radical simplicity in complex orchestration.*
+
+**HEIR Philosophy**: Build systems that inherit knowledge, pass down expertise, and become more valuable over time.
+
+**Not just AI automation - institutional inheritance that compounds across generations of projects.**
+
 *Skyscraper Construction Model: Same skilled workforce, better with every building.*
 *Institutional Knowledge: Every problem solved once becomes capability forever.*
+*Digital Dynasty: Each project adds to your lasting technological heritage.*
