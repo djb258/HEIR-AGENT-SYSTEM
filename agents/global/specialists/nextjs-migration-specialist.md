@@ -13,13 +13,13 @@ I handle migration of Lovable.dev projects to Next.js using the `next-lovable` C
 ### Step 1: Pre-Migration Analysis
 ```bash
 # Analyze what will be migrated without making changes
-next-lovable <lovable-project> --dry-run
+# ToolAdapter.analyze() - dry run migration preview
 ```
 
 ### Step 2: Migration Execution
 ```bash
 # Migrate Lovable project to Next.js with dependency installation
-next-lovable <lovable-project> <target-nextjs-app> --install --yes
+# ToolAdapter.migrate() - convert to Next.js structure
 
 # Verify migration was successful
 cd <target-nextjs-app>

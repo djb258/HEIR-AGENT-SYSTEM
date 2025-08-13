@@ -275,19 +275,17 @@ Access-Control-Max-Age: 86400
 ### Delovable CLI (Pre-deployment Cleanup)
 ```bash
 # Clean Lovable metadata and prepare for deployment
-delovable <project-path> -p none -v
+# ToolAdapter: project cleanup interface
 
 # For specific platforms (if migrating later)
-delovable <project-path> -p vercel|cloudflare|netlify -v
+# ToolAdapter interface can be extended for platform-specific cleanup
 ```
 
 ### Next-Lovable CLI (Migration Tool)
 ```bash
 # Migrate Lovable project to Next.js (if needed)
-next-lovable <lovable-project> <target-folder> --install
-
-# Dry run to see what would be migrated
-next-lovable <lovable-project> --dry-run
+# ToolAdapter interface for project structure conversion
+# Implementation can be plugged in without system refactor
 ```
 
 ## Deployment Workflow with CLI Tools
@@ -346,7 +344,7 @@ services:
 
 When activated for a Lovable.dev + Render deployment:
 
-1. **Clean the Lovable project** using `delovable` CLI tool
+1. **Clean the Lovable project** using ToolAdapter cleanup interface
 2. **Verify cleanup** and check for any remaining metadata
 3. **Apply the exact CORS configuration** from this agent
 4. **Add all required endpoints** including health checks and debug endpoints  

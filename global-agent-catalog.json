@@ -281,7 +281,7 @@
       "integration_status": "integrated_into_deployment_specialist",
       "description": "Proven CORS configuration for Lovable.dev projects on Render",
       "proven_solutions": ["battle_tested_cors_configuration", "lovable_metadata_cleanup", "render_deployment_optimization"],
-      "cli_tools": ["delovable", "next-lovable"]
+      "tool_adapter": "pluggable_cli_interface"
     },
 
     "orbt-monitor": {

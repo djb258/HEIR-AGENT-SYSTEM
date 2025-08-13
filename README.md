@@ -257,7 +257,7 @@ The HEIR system transforms complex software development into simple conversation
 - **Command Ops Database**: Direct integration with your production Render endpoints
 - **DPR Doctrine Table**: Enforces your complete doctrine system across all operations
 - **Battle-tested Solutions**: Includes proven CORS configurations and database patterns
-- **CLI Tools**: Integrated delovable and next-lovable for Lovable.dev projects
+- **CLI Tools**: ToolAdapter interface for pluggable CLI integrations
 - **Real-time Monitoring**: ORBT dashboard with escalation to your notification systems
 
 ---
