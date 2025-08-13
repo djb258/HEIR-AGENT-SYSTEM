@@ -446,25 +446,39 @@ CREATE TRIGGER trigger_error_escalation
 CREATE SEQUENCE IF NOT EXISTS doctrine_integration_seq;
 CREATE SEQUENCE IF NOT EXISTS doctrine_hierarchy_seq;
 
--- Hierarchical doctrine table
+-- Hierarchical doctrine table (using your exact DPR numbering system)
 CREATE TABLE IF NOT EXISTS shq.orbt_doctrine_hierarchy (
     id SERIAL PRIMARY KEY,
-    doctrine_id VARCHAR(50) UNIQUE NOT NULL,
-    subhive_code VARCHAR(2) NOT NULL,
-    process_code VARCHAR(3) NULL,
-    step_code VARCHAR(3) NULL,
-    doctrine_title VARCHAR(200) NOT NULL,
-    doctrine_content TEXT NOT NULL,
-    behavioral_rules TEXT[] NOT NULL,
-    decision_criteria TEXT[] NOT NULL,
-    escalation_triggers TEXT[] NOT NULL,
-    enforcement_level VARCHAR(20) NOT NULL CHECK (enforcement_level IN ('MANDATORY', 'RECOMMENDED', 'INFORMATIONAL')),
-    violation_consequences VARCHAR(100) NULL,
-    applicable_conditions TEXT[] NULL,
-    exceptions_allowed TEXT[] NULL,
-    requires_approval BOOLEAN DEFAULT FALSE,
-    dpr_doctrine_section VARCHAR(100) NULL,
-    dpr_doctrine_version VARCHAR(10) NULL,
+    
+    -- Your Existing Section Number Format: [database].[subhive].[subsubhive].[section].[sequence]
+    section_number VARCHAR(20) NOT NULL UNIQUE,
+    section_title VARCHAR(200) NOT NULL,
+    
+    -- Your Existing Unique ID Format: [DB].[SUBHIVE].[MICROPROCESS].[TOOL].[ALTITUDE].[STEP]
+    unique_id_pattern VARCHAR(30) NULL,
+    
+    -- Parsed Components (for efficient lookup)
+    database_id VARCHAR(2) NOT NULL,
+    subhive_id VARCHAR(2) NOT NULL,
+    subsubhive_id VARCHAR(2) NULL,
+    section_id VARCHAR(2) NOT NULL,
+    sequence_number VARCHAR(3) NOT NULL,
+    
+    -- Content from your dpr_doctrine
+    doctrine_text TEXT NOT NULL,
+    doctrine_type VARCHAR(50) NOT NULL,
+    enforcement_level VARCHAR(20) NOT NULL,
+    doctrine_category VARCHAR(50) NOT NULL,
+    sub_hive VARCHAR(50) NOT NULL,
+    enforcement_target VARCHAR(100) NULL,
+    enforcement_scope VARCHAR(100) NULL,
+    
+    -- Additional HEIR fields
+    behavioral_rules TEXT[] NULL,
+    escalation_triggers TEXT[] NULL,
+    
+    -- Original DPR reference
+    original_dpr_id UUID NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     last_referenced TIMESTAMPTZ NULL,
@@ -598,14 +612,17 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- Doctrine migration from dpr_doctrine
-CREATE OR REPLACE FUNCTION shq.migrate_doctrine_from_dpr()
+-- Doctrine migration using your exact DPR numbering system
+CREATE OR REPLACE FUNCTION shq.migrate_dpr_doctrine_exact()
 RETURNS TEXT AS $$
 DECLARE
     doctrine_record RECORD;
-    v_subhive_code VARCHAR(2);
     v_migrated_count INTEGER := 0;
-    v_doctrine_id VARCHAR(50);
+    v_database_id VARCHAR(2);
+    v_subhive_id VARCHAR(2);
+    v_subsubhive_id VARCHAR(2);
+    v_section_id VARCHAR(2);
+    v_sequence_number VARCHAR(3);
 BEGIN
     -- Check if dpr_doctrine table exists
     IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'dpr_doctrine') THEN
@@ -613,36 +630,72 @@ BEGIN
     END IF;
     
     FOR doctrine_record IN 
-        SELECT * FROM dpr_doctrine LIMIT 100  -- Limit for initial migration
+        SELECT * FROM dpr_doctrine 
+        ORDER BY section_number
+        LIMIT 500  -- Process in batches
     LOOP
-        v_subhive_code := shq.classify_doctrine_by_subhive(doctrine_record.content);
-        v_doctrine_id := v_subhive_code || '.000.000';
+        -- Parse your section_number format: [database].[subhive].[subsubhive].[section].[sequence]
+        SELECT 
+            SPLIT_PART(doctrine_record.section_number, '.', 1)::VARCHAR(2),
+            LPAD(SPLIT_PART(doctrine_record.section_number, '.', 2), 2, '0'),
+            LPAD(SPLIT_PART(doctrine_record.section_number, '.', 3), 2, '0'),
+            LPAD(SPLIT_PART(doctrine_record.section_number, '.', 4), 2, '0'),
+            LPAD(SPLIT_PART(doctrine_record.section_number, '.', 5), 3, '0')
+        INTO v_database_id, v_subhive_id, v_subsubhive_id, v_section_id, v_sequence_number;
         
+        -- Insert using your exact format
         INSERT INTO shq.orbt_doctrine_hierarchy (
-            doctrine_id, subhive_code, doctrine_title, doctrine_content,
-            behavioral_rules, decision_criteria, escalation_triggers,
-            enforcement_level, dpr_doctrine_section
+            section_number,
+            section_title,
+            database_id,
+            subhive_id,
+            subsubhive_id,
+            section_id,
+            sequence_number,
+            doctrine_text,
+            doctrine_type,
+            enforcement_level,
+            doctrine_category,
+            sub_hive,
+            enforcement_target,
+            enforcement_scope,
+            original_dpr_id,
+            behavioral_rules,
+            escalation_triggers
         ) VALUES (
-            v_doctrine_id, v_subhive_code,
-            COALESCE(doctrine_record.title, 'Subhive ' || v_subhive_code || ' Doctrine'),
-            doctrine_record.content,
-            string_to_array(regexp_replace(doctrine_record.content, '.*?((?:must|shall|required)[^.]*\.)', '\1', 'gi'), '.'),
-            string_to_array(regexp_replace(doctrine_record.content, '.*?((?:when|if|during)[^.]*\.)', '\1', 'gi'), '.'),
-            string_to_array(regexp_replace(doctrine_record.content, '.*?((?:escalate|notify|alert)[^.]*\.)', '\1', 'gi'), '.'),
-            CASE 
-                WHEN doctrine_record.content ILIKE '%must%' OR doctrine_record.content ILIKE '%shall%' THEN 'MANDATORY'
-                WHEN doctrine_record.content ILIKE '%should%' THEN 'RECOMMENDED'
-                ELSE 'INFORMATIONAL'
-            END,
-            COALESCE(doctrine_record.section, 'UNKNOWN')
-        ) ON CONFLICT (doctrine_id) DO UPDATE SET
-            doctrine_content = EXCLUDED.doctrine_content,
+            doctrine_record.section_number,
+            COALESCE(doctrine_record.section_title, 'Section ' || doctrine_record.section_number),
+            v_database_id,
+            v_subhive_id,
+            v_subsubhive_id,
+            v_section_id,
+            v_sequence_number,
+            doctrine_record.doctrine_text,
+            COALESCE(doctrine_record.doctrine_type, 'general'),
+            COALESCE(doctrine_record.enforcement_level, 'informational'),
+            COALESCE(doctrine_record.doctrine_category, 'general'),
+            COALESCE(doctrine_record.sub_hive, 'unknown'),
+            doctrine_record.enforcement_target,
+            doctrine_record.enforcement_scope,
+            doctrine_record.id::UUID,
+            -- Extract behavioral rules
+            string_to_array(
+                regexp_replace(doctrine_record.doctrine_text, '.*?((?:must|shall|required)[^.]*\.)', '\1', 'gi'),
+                '.'
+            ),
+            -- Extract escalation triggers
+            string_to_array(
+                regexp_replace(doctrine_record.doctrine_text, '.*?((?:escalate|notify|alert)[^.]*\.)', '\1', 'gi'),
+                '.'
+            )
+        ) ON CONFLICT (section_number) DO UPDATE SET
+            doctrine_text = EXCLUDED.doctrine_text,
             updated_at = NOW();
         
         v_migrated_count := v_migrated_count + 1;
     END LOOP;
     
-    RETURN 'Successfully migrated ' || v_migrated_count || ' doctrine entries';
+    RETURN 'Successfully migrated ' || v_migrated_count || ' doctrine records using exact DPR numbering format';
 END;
 $$ LANGUAGE plpgsql;
 
@@ -733,7 +786,7 @@ console.log('\n🚀 Next steps:');
 console.log('1. Fill out heir-project-config.json with your project requirements');
 console.log('2. Deploy database schema: psql -f .heir/database_schemas/orbt-schema.sql');
 console.log('3. Load troubleshooting data: psql -f .heir/database_schemas/troubleshooting-data.sql');
-console.log('4. Auto-migrate doctrine: SELECT shq.migrate_doctrine_from_dpr(); (if dpr_doctrine exists)');
+console.log('4. Auto-migrate doctrine: SELECT shq.migrate_dpr_doctrine_exact(); (uses your DPR numbering)');
 console.log('4. Activate needed Domain Orchestrators (Data, Payment, Integration, Platform)');
 console.log('5. Specialists will be assigned automatically by Domain Orchestrators'); 
 console.log('6. Bring completed config to Claude Code with HEIR Claude Code Specialist');

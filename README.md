@@ -184,7 +184,49 @@ The HEIR system transforms complex software development into simple conversation
 
 **Bottom Line**: Transform your business into a learning organization where AI builds institutional intelligence, not just individual solutions. You're not just automating - you're creating a digital dynasty that appreciates in value.
 
+## Complete Documentation Index
+
+### Core System Files
+- 📋 **[HEIR-Todo-Integration.md](HEIR-Todo-Integration.md)** - Claude Code todo list management system
+- 🏗️ **[heir-drop-in.js](heir-drop-in.js)** - Universal deployment script with complete error logging
+- 📊 **[HEIR-Doctrine-Numbering-Integration.md](HEIR-Doctrine-Numbering-Integration.md)** - DPR doctrine numbering system integration
+- 👥 **[global-agent-catalog.json](global-agent-catalog.json)** - Complete agent hierarchy and specialist library
+- 🎯 **[agents/global/specialists/outreach-scraper-specialist.md](agents/global/specialists/outreach-scraper-specialist.md)** - Advanced lead generation specialist
+
+### Documentation Templates
+- 📝 **[HEIR-Documentation-Template.md](HEIR-Documentation-Template.md)** - Multi-altitude documentation framework
+- 📖 **[HEIR-Barton-Doctrine-Template.md](HEIR-Barton-Doctrine-Template.md)** - Doctrine-aligned template with 10 subhive chapters
+- 🗃️ **[HEIR-Error-Logging-Schema.md](HEIR-Error-Logging-Schema.md)** - Complete database schema for error tracking
+- 🛠️ **[HEIR-Troubleshooting-Table.md](HEIR-Troubleshooting-Table.md)** - Instant error resolution lookup system
+- 📈 **[HEIR-Resolution-Tracking.md](HEIR-Resolution-Tracking.md)** - Never start from scratch system
+
+### Command Center Documentation
+- 🖥️ **[HEIR-Command-Center-One-Pager.md](HEIR-Command-Center-One-Pager.md)** - Technical flow diagram
+- 📊 **[HEIR-Executive-Overview.md](HEIR-Executive-Overview.md)** - Non-technical Christmas tree org chart
+- 📋 **[HEIR-Granular-Doctrine-System.md](HEIR-Granular-Doctrine-System.md)** - Hierarchical doctrine by subhive/process/step
+
 ## Technical Architecture Details
+
+### Complete Error Logging & ORBT System
+- **Master Error Table**: All errors automatically logged to `shq.orbt_error_log` table
+- **Troubleshooting Guide**: Instant error resolution with `shq.orbt_troubleshooting_guide` lookup
+- **Resolution Library**: Never start from scratch with `shq.orbt_resolution_library`
+- **3-Strike Escalation**: Automated escalation with human intervention tracking
+- **Real-time Monitoring**: Complete ORBT dashboard with performance metrics
+
+### Claude Code Todo List Integration
+- **Automatic Todo Generation**: Claude creates organized task lists for complex projects
+- **Progress Tracking**: Real-time updates on project completion status
+- **Database Integration**: Todo persistence with `shq.orbt_project_todos` table
+- **Task Dependencies**: Intelligent task ordering and prerequisite management
+- **Session Tracking**: Link todos to specific Claude Code sessions
+
+### DPR Doctrine Integration (Your Exact Numbering System)
+- **Section Number Format**: `[database].[subhive].[subsubhive].[section].[sequence]` (from your dpr_doctrine)
+- **Unique ID Format**: `[DB].[SUBHIVE].[MICROPROCESS].[TOOL].[ALTITUDE].[STEP]` (your exact format)
+- **Automatic Migration**: `shq.migrate_dpr_doctrine_exact()` function imports your 600-page doctrine
+- **Granular Control**: Doctrine enforcement by subhive, process, and step level
+- **Agent Compliance**: All agents consult your doctrine before decisions
 
 ### Institutional Knowledge System
 - **Knowledge Capture**: Automatically documents successful solutions from all specialists
@@ -193,15 +235,23 @@ The HEIR system transforms complex software development into simple conversation
 - **3-Strike Enhancement**: Specialists use institutional knowledge for Strike 1 auto-fixes
 - **Continuous Improvement**: System becomes more effective with every project completed
 
-### Agent Library Registry
-- **Database Specialist**: Works across all data-driven projects with STAMPED/SPVPET/STACKED expertise
-- **Payment Specialist**: Handles all financial transactions with PCI compliance and fraud detection
-- **API Specialist**: Manages all external integrations with intelligent rate limiting
-- **Scraper Specialist**: Ethical data extraction with anti-detection and quality assurance
-- **Deployment Specialist**: Infrastructure and hosting across all platforms with zero-downtime strategies
-- **Monitoring Specialist**: ORBT protocol monitoring with predictive alerting
-- **Communication Specialist**: Multi-channel notifications with deliverability optimization
-- **AI-ML Specialist**: AI integration with cost optimization and safety implementation
+### Complete Agent Library Registry
+- **Database Specialist**: STAMPED/SPVPET/STACKED schema enforcement, connection pool optimization
+- **Payment Specialist**: Stripe webhooks, PCI compliance, fraud detection, multi-gateway failover
+- **API Specialist**: OAuth 2.0, intelligent rate limiting, multi-provider failover systems
+- **Scraper Specialist**: Apify optimization, anti-detection techniques, ethical compliance
+- **Outreach Scraper Specialist**: Apollo, LinkedIn, Instantly.ai, Google Maps integration
+- **Deployment Specialist**: Render optimization, Docker configuration, CI/CD pipeline templates
+- **Monitoring Specialist**: ORBT protocol monitoring, predictive alerting, dashboard design
+- **Communication Specialist**: SendGrid optimization, multi-channel orchestration
+- **AI-ML Specialist**: OpenAI cost optimization, multi-model fallback strategies
+
+### Universal Deployment System
+- **Drop-in Setup**: Single file deployment to any existing project
+- **Database Schema**: Automatic creation of complete error logging, doctrine, and todo systems
+- **Configuration Templates**: Pre-built project templates for common use cases
+- **Cross-Platform**: Works with any tech stack, database, or hosting platform
+- **Version Control**: Automatic .gitignore entries and configuration management
 
 ### Production Integration
 - **Command Ops Database**: Direct integration with your production Render endpoints
