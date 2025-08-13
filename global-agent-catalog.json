@@ -241,6 +241,23 @@
       "institutional_knowledge_applies_to": ["AI_provider_optimization", "prompt_engineering_patterns", "cost_optimization_techniques"],
       "orbt_monitoring": ["AI_API_availability", "cost_tracking", "output_quality_consistency"],
       "battle_tested_solutions": ["ai_cost_optimization_strategies", "multi_model_orchestration", "ai_safety_and_content_filtering"]
+    },
+
+    "outreach-scraper-specialist": {
+      "agent_id": "outreach-scraper-specialist",
+      "level": 2,
+      "role": "outreach_data_collection_expert",
+      "status": "production_ready",
+      "description": "Advanced outreach and lead generation expert working across all projects requiring prospect data",
+      "tools": ["Apollo_API", "LinkedIn_Scraping", "Instantly_AI", "Google_Maps_API", "Apify", "Universal_Scraper", "Contact_Enrichment"],
+      "specialties": ["multi_source_lead_generation", "contact_data_enrichment", "lead_scoring_algorithms", "campaign_data_preparation"],
+      "cross_project_reusability": "very_high_reusability_across_all_outreach_and_sales_projects",
+      "institutional_knowledge_applies_to": ["source_optimization_patterns", "lead_scoring_calibration", "enrichment_strategy_effectiveness", "campaign_conversion_patterns"],
+      "orbt_monitoring": ["lead_generation_success_rates", "data_quality_scores", "source_performance_metrics", "enrichment_completion_rates"],
+      "battle_tested_solutions": ["multi_platform_lead_discovery", "intelligent_contact_scoring", "ethical_scraping_compliance", "campaign_integration_optimization"],
+      "file_location": "agents/global/specialists/outreach-scraper-specialist.md",
+      "integrates_with": ["apollo_api", "linkedin_platform", "instantly_ai", "google_maps", "crm_systems"],
+      "coordinates_with": ["database-specialist", "communication-specialist", "api-specialist"]
     }
   },
 
@@ -309,6 +326,20 @@
       "required_agents": ["master-orchestrator", "data-orchestrator", "integration-orchestrator", "platform-orchestrator"],
       "specialists_assigned": ["database-specialist", "scraper-specialist", "api-specialist", "ai-ml-specialist", "deployment-specialist"],
       "estimated_completion": "1-2_weeks_with_proven_scraping_and_analysis_patterns"
+    },
+    
+    "outreach_lead_generation_system": {
+      "required_agents": ["master-orchestrator", "data-orchestrator", "integration-orchestrator", "platform-orchestrator"],
+      "specialists_assigned": ["database-specialist", "outreach-scraper-specialist", "api-specialist", "communication-specialist", "ai-ml-specialist", "deployment-specialist"],
+      "estimated_completion": "1-2_weeks_with_institutional_outreach_knowledge_and_proven_conversion_patterns",
+      "description": "Complete outreach system with multi-source lead generation, enrichment, scoring, and campaign automation"
+    },
+    
+    "saas_with_outreach_automation": {
+      "required_agents": ["master-orchestrator", "data-orchestrator", "payment-orchestrator", "integration-orchestrator", "platform-orchestrator"],
+      "specialists_assigned": ["database-specialist", "payment-specialist", "outreach-scraper-specialist", "api-specialist", "ai-ml-specialist", "communication-specialist", "deployment-specialist", "monitoring-specialist"],
+      "estimated_completion": "2-3_weeks_with_full_institutional_knowledge_and_outreach_optimization",
+      "description": "Enterprise SaaS platform with integrated outreach, lead generation, and customer acquisition automation"
     }
   }
 }
