@@ -1,0 +1,1 @@
+- go ahead and add the readme file to your memory this pretty much dictates how everything needs to be coded and what you need to understand about the system
