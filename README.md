@@ -89,35 +89,46 @@ The system implements **Operation, Repair, Build, Training** protocols with inte
 - **Universal Rules 1-7**: Complete doctrine enforcement across all agents
 - **Production Integration**: Direct integration with command ops database and doctrine table
 
-## Getting Started - Skyscraper Construction
+## Quick Start (5 Minutes)
 
-### 1. Drop-in Setup
+### 1. Deploy Database Schema
 ```bash
-# Drop heir-drop-in.js into any existing project
+# Clone the repository
+git clone https://github.com/djb258/HEIR-AGENT-SYSTEM.git
+cd HEIR-AGENT-SYSTEM
+
+# Set your database URL
+export DATABASE_URL="postgresql://username:password@host:port/database"
+
+# Deploy platform schema
+bash scripts/deploy-database.sh
+```
+
+### 2. Initialize Platform
+```bash
+# Initialize HEIR platform
 node heir-drop-in.js
 ```
 
-### 2. Configure Your Project
-Fill out the generated `heir-project-config.json` with your requirements:
-- Project type and description
-- Required domain orchestrators (Data, Payment, Integration, Platform)
-- Specialist assignments from reusable workforce pool
-- DPR system integration settings
-- 3-Strike ORBT configuration
+### 3. Integrate Your Application
+```javascript
+// Add doctrine headers to all database writes
+const doctrineHeaders = {
+  unique_id: "APP.01.PROC.DB.10000.001",
+  process_id: "ProcessData", 
+  blueprint_id: "your-app-name",
+  agent_signature: "your-app:timestamp:hash"
+};
 
-### 3. Construct Your HEIR Skyscraper
-Bring your completed config to Claude Code:
-```
-"Set up my HEIR project"
+// Route writes through Database Gatekeeper
+// Route API calls through API Gateway
 ```
 
-The HEIR Claude Code Specialist will automatically:
-🏗️ Create Master Orchestrator (Building Superintendent)
-🏢 Create Domain Orchestrators (Floor Managers) for needed domains
-🔧 Assign Specialists from reusable workforce pool
-⚡ Set up 3-Strike ORBT escalation protocol
-🧠 Configure institutional knowledge system
-📊 Test skyscraper coordination and report system status
+✅ **Your application now has enterprise-grade security, audit trails, and compliance!**
+
+📖 **Detailed Guide**: See [DEPLOYMENT-GUIDE.md](DEPLOYMENT-GUIDE.md) for complete integration instructions
+🚀 **Quick Start**: See [QUICK-START.md](QUICK-START.md) for 5-minute setup
+⚡ **Cheat Sheet**: See [INTEGRATION-CHEAT-SHEET.md](INTEGRATION-CHEAT-SHEET.md) for rapid deployment reference
 
 ## Project Examples - Skyscraper Construction
 

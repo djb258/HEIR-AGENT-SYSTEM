@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  # PostgreSQL database for HEIR platform
+  heir-database:
+    image: postgres:15-alpine
+    container_name: heir-postgres
+    environment:
+      POSTGRES_DB: heir_platform
+      POSTGRES_USER: heir_user
+      POSTGRES_PASSWORD: heir_password
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U heir_user -d heir_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - heir-network
+
+  # Redis for rate limiting and caching (optional)
+  heir-redis:
+    image: redis:7-alpine
+    container_name: heir-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass heir_redis_password
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - heir-network
+
+  # HEIR Platform initialization service
+  heir-platform:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: heir-platform
+    environment:
+      # Database configuration
+      DATABASE_URL: postgresql://heir_user:heir_password@heir-database:5432/heir_platform
+      
+      # Platform configuration
+      PLATFORM_ENV: development
+      LOG_LEVEL: debug
+      
+      # Optional: Redis configuration
+      REDIS_URL: redis://:heir_redis_password@heir-redis:6379/0
+      
+      # Optional: Monitoring
+      HEIR_MONITORING_ENDPOINT: ${HEIR_MONITORING_ENDPOINT:-}
+      
+      # Security settings
+      AUTH_REQUIRED: ${AUTH_REQUIRED:-false}
+      RATE_LIMIT_ENABLED: ${RATE_LIMIT_ENABLED:-true}
+      
+    ports:
+      - "3000:3000"
+    depends_on:
+      heir-database:
+        condition: service_healthy
+      heir-redis:
+        condition: service_healthy
+    volumes:
+      - ./heir-project-config.json:/app/heir-project-config.json:ro
+    networks:
+      - heir-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  heir-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
