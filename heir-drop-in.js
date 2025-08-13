@@ -441,6 +441,216 @@ CREATE TRIGGER trigger_error_escalation
     AFTER INSERT ON shq.orbt_error_log
     FOR EACH ROW
     EXECUTE FUNCTION shq.check_error_escalation();
+
+-- DOCTRINE INTEGRATION SYSTEM (Granular by Subhive and Process)
+CREATE SEQUENCE IF NOT EXISTS doctrine_integration_seq;
+CREATE SEQUENCE IF NOT EXISTS doctrine_hierarchy_seq;
+
+-- Hierarchical doctrine table
+CREATE TABLE IF NOT EXISTS shq.orbt_doctrine_hierarchy (
+    id SERIAL PRIMARY KEY,
+    doctrine_id VARCHAR(50) UNIQUE NOT NULL,
+    subhive_code VARCHAR(2) NOT NULL,
+    process_code VARCHAR(3) NULL,
+    step_code VARCHAR(3) NULL,
+    doctrine_title VARCHAR(200) NOT NULL,
+    doctrine_content TEXT NOT NULL,
+    behavioral_rules TEXT[] NOT NULL,
+    decision_criteria TEXT[] NOT NULL,
+    escalation_triggers TEXT[] NOT NULL,
+    enforcement_level VARCHAR(20) NOT NULL CHECK (enforcement_level IN ('MANDATORY', 'RECOMMENDED', 'INFORMATIONAL')),
+    violation_consequences VARCHAR(100) NULL,
+    applicable_conditions TEXT[] NULL,
+    exceptions_allowed TEXT[] NULL,
+    requires_approval BOOLEAN DEFAULT FALSE,
+    dpr_doctrine_section VARCHAR(100) NULL,
+    dpr_doctrine_version VARCHAR(10) NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    last_referenced TIMESTAMPTZ NULL,
+    reference_count INTEGER DEFAULT 0
+);
+
+-- Doctrine integration tracking
+CREATE TABLE IF NOT EXISTS shq.orbt_doctrine_integration (
+    id SERIAL PRIMARY KEY,
+    integration_id VARCHAR(50) UNIQUE NOT NULL,
+    error_id VARCHAR(50) NULL,
+    resolution_id VARCHAR(50) NULL,
+    agent_id VARCHAR(100) NOT NULL,
+    doctrine_section VARCHAR(100) NOT NULL,
+    doctrine_subsection VARCHAR(100) NULL,
+    subhive_code VARCHAR(2) NOT NULL,
+    decision_type VARCHAR(50) NOT NULL,
+    decision_made TEXT NOT NULL,
+    doctrine_compliance VARCHAR(20) NOT NULL CHECK (doctrine_compliance IN ('COMPLIANT', 'EXCEPTION', 'UNCLEAR')),
+    exception_reason TEXT NULL,
+    doctrine_query TEXT NOT NULL,
+    doctrine_response TEXT NOT NULL,
+    confidence_score DECIMAL(5,2) NOT NULL DEFAULT 0.0,
+    consulted_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    decision_outcome VARCHAR(50) NULL,
+    human_review_required BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- Auto-classification function
+CREATE OR REPLACE FUNCTION shq.classify_doctrine_by_subhive(doctrine_content TEXT)
+RETURNS VARCHAR(2) AS $$
+BEGIN
+    IF doctrine_content ILIKE ANY(ARRAY['%system coordination%', '%master orchestrator%', '%escalation%', '%overall system%']) THEN
+        RETURN '01';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%customer%', '%client%', '%user experience%', '%support%', '%service%']) THEN
+        RETURN '02';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%database%', '%data%', '%query%', '%storage%', '%backup%', '%sql%']) THEN
+        RETURN '03';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%payment%', '%billing%', '%invoice%', '%refund%', '%transaction%', '%financial%']) THEN
+        RETURN '04';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%integration%', '%api%', '%external%', '%webhook%', '%third party%']) THEN
+        RETURN '05';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%infrastructure%', '%deployment%', '%hosting%', '%server%', '%platform%']) THEN
+        RETURN '06';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%monitoring%', '%analytics%', '%metrics%', '%logging%', '%reporting%']) THEN
+        RETURN '07';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%security%', '%compliance%', '%audit%', '%privacy%', '%encryption%']) THEN
+        RETURN '08';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%communication%', '%notification%', '%email%', '%messaging%', '%alert%']) THEN
+        RETURN '09';
+    ELSIF doctrine_content ILIKE ANY(ARRAY['%artificial intelligence%', '%machine learning%', '%ai%', '%automation%']) THEN
+        RETURN '10';
+    ELSE
+        RETURN '01';
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Doctrine lookup function
+CREATE OR REPLACE FUNCTION shq.get_process_doctrine(
+    p_unique_id VARCHAR(50),
+    p_decision_context TEXT DEFAULT NULL
+) RETURNS TABLE(
+    doctrine_level VARCHAR(20),
+    doctrine_title VARCHAR(200),
+    behavioral_rules TEXT[],
+    decision_criteria TEXT[],
+    enforcement_level VARCHAR(20),
+    escalation_required BOOLEAN,
+    approval_required BOOLEAN,
+    applicable_rules TEXT[]
+) AS $$
+DECLARE
+    v_subhive VARCHAR(2);
+    v_process VARCHAR(3);
+    v_step VARCHAR(3);
+BEGIN
+    SELECT 
+        SPLIT_PART(p_unique_id, '.', 2),
+        SPLIT_PART(p_unique_id, '.', 3), 
+        SPLIT_PART(p_unique_id, '.', 6)
+    INTO v_subhive, v_process, v_step;
+    
+    RETURN QUERY
+    WITH doctrine_hierarchy AS (
+        SELECT 'STEP' as doctrine_level, d.*
+        FROM shq.orbt_doctrine_hierarchy d
+        WHERE d.subhive_code = v_subhive 
+        AND d.process_code = v_process 
+        AND d.step_code = v_step
+        
+        UNION ALL
+        
+        SELECT 'PROCESS' as doctrine_level, d.*
+        FROM shq.orbt_doctrine_hierarchy d
+        WHERE d.subhive_code = v_subhive 
+        AND d.process_code = v_process 
+        AND d.step_code IS NULL
+        
+        UNION ALL
+        
+        SELECT 'SUBHIVE' as doctrine_level, d.*
+        FROM shq.orbt_doctrine_hierarchy d
+        WHERE d.subhive_code = v_subhive 
+        AND d.process_code IS NULL 
+        AND d.step_code IS NULL
+    )
+    SELECT 
+        dh.doctrine_level,
+        dh.doctrine_title,
+        dh.behavioral_rules,
+        dh.decision_criteria,
+        dh.enforcement_level,
+        (array_length(dh.escalation_triggers, 1) > 0) as escalation_required,
+        dh.requires_approval,
+        dh.behavioral_rules as applicable_rules
+    FROM doctrine_hierarchy dh
+    ORDER BY 
+        CASE dh.doctrine_level 
+            WHEN 'STEP' THEN 1 
+            WHEN 'PROCESS' THEN 2 
+            WHEN 'SUBHIVE' THEN 3 
+        END;
+        
+    UPDATE shq.orbt_doctrine_hierarchy 
+    SET reference_count = reference_count + 1,
+        last_referenced = NOW()
+    WHERE subhive_code = v_subhive;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Doctrine migration from dpr_doctrine
+CREATE OR REPLACE FUNCTION shq.migrate_doctrine_from_dpr()
+RETURNS TEXT AS $$
+DECLARE
+    doctrine_record RECORD;
+    v_subhive_code VARCHAR(2);
+    v_migrated_count INTEGER := 0;
+    v_doctrine_id VARCHAR(50);
+BEGIN
+    -- Check if dpr_doctrine table exists
+    IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'dpr_doctrine') THEN
+        RETURN 'dpr_doctrine table not found - skipping migration';
+    END IF;
+    
+    FOR doctrine_record IN 
+        SELECT * FROM dpr_doctrine LIMIT 100  -- Limit for initial migration
+    LOOP
+        v_subhive_code := shq.classify_doctrine_by_subhive(doctrine_record.content);
+        v_doctrine_id := v_subhive_code || '.000.000';
+        
+        INSERT INTO shq.orbt_doctrine_hierarchy (
+            doctrine_id, subhive_code, doctrine_title, doctrine_content,
+            behavioral_rules, decision_criteria, escalation_triggers,
+            enforcement_level, dpr_doctrine_section
+        ) VALUES (
+            v_doctrine_id, v_subhive_code,
+            COALESCE(doctrine_record.title, 'Subhive ' || v_subhive_code || ' Doctrine'),
+            doctrine_record.content,
+            string_to_array(regexp_replace(doctrine_record.content, '.*?((?:must|shall|required)[^.]*\.)', '\1', 'gi'), '.'),
+            string_to_array(regexp_replace(doctrine_record.content, '.*?((?:when|if|during)[^.]*\.)', '\1', 'gi'), '.'),
+            string_to_array(regexp_replace(doctrine_record.content, '.*?((?:escalate|notify|alert)[^.]*\.)', '\1', 'gi'), '.'),
+            CASE 
+                WHEN doctrine_record.content ILIKE '%must%' OR doctrine_record.content ILIKE '%shall%' THEN 'MANDATORY'
+                WHEN doctrine_record.content ILIKE '%should%' THEN 'RECOMMENDED'
+                ELSE 'INFORMATIONAL'
+            END,
+            COALESCE(doctrine_record.section, 'UNKNOWN')
+        ) ON CONFLICT (doctrine_id) DO UPDATE SET
+            doctrine_content = EXCLUDED.doctrine_content,
+            updated_at = NOW();
+        
+        v_migrated_count := v_migrated_count + 1;
+    END LOOP;
+    
+    RETURN 'Successfully migrated ' || v_migrated_count || ' doctrine entries';
+END;
+$$ LANGUAGE plpgsql;
+
+-- Indexes for performance
+CREATE INDEX IF NOT EXISTS idx_doctrine_hierarchy_subhive ON shq.orbt_doctrine_hierarchy(subhive_code);
+CREATE INDEX IF NOT EXISTS idx_doctrine_hierarchy_process ON shq.orbt_doctrine_hierarchy(subhive_code, process_code);
+CREATE INDEX IF NOT EXISTS idx_doctrine_integration_agent ON shq.orbt_doctrine_integration(agent_id);
+CREATE INDEX IF NOT EXISTS idx_doctrine_integration_subhive ON shq.orbt_doctrine_integration(subhive_code);
 `;
 
 const troubleshootingData = `
@@ -516,10 +726,14 @@ console.log('✅ AUTOMATIC: Troubleshooting guide with instant lookup');
 console.log('✅ AUTOMATIC: Resolution tracking (never start from scratch)');
 console.log('✅ AUTOMATIC: 3-strike escalation with human intervention');
 console.log('✅ AUTOMATIC: Pattern recognition and institutional learning');
+console.log('✅ AUTOMATIC: Granular doctrine integration from dpr_doctrine table');
+console.log('✅ AUTOMATIC: Subhive and process-level behavioral control');
+console.log('✅ AUTOMATIC: Agent doctrine compliance checking and enforcement');
 console.log('\n🚀 Next steps:');
 console.log('1. Fill out heir-project-config.json with your project requirements');
 console.log('2. Deploy database schema: psql -f .heir/database_schemas/orbt-schema.sql');
 console.log('3. Load troubleshooting data: psql -f .heir/database_schemas/troubleshooting-data.sql');
+console.log('4. Auto-migrate doctrine: SELECT shq.migrate_doctrine_from_dpr(); (if dpr_doctrine exists)');
 console.log('4. Activate needed Domain Orchestrators (Data, Payment, Integration, Platform)');
 console.log('5. Specialists will be assigned automatically by Domain Orchestrators'); 
 console.log('6. Bring completed config to Claude Code with HEIR Claude Code Specialist');
