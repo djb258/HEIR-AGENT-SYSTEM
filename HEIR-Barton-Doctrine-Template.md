@@ -41,6 +41,7 @@
 ## Chapter 01: SHQ - System Headquarters
 **Subhive Code:** 01  
 **Function:** System control and orchestration  
+**Database Schema:** `shq` (Contains master error logging tables)  
 
 ### Section 01.1: [Process Name]
 **Process ID:** [VerbObject]  
@@ -54,9 +55,11 @@
 - **Output Specifications:** [Placeholder]
 
 ##### Repair
+- **Error Logging:** All errors logged to `shq.orbt_error_log`
 - **Error Patterns:** [Placeholder for common errors]
 - **Recovery Procedures:** [Placeholder]
 - **Escalation Protocols:** [Placeholder]
+- **Error Tables:** `shq.orbt_error_log`, `shq.orbt_escalation_queue`, `shq.orbt_error_patterns`
 
 ##### Build
 - **Extension Points:** [Placeholder for enhancement areas]
@@ -299,10 +302,11 @@
 - Success metrics and KPIs
 
 ### Repair
-- Error detection and handling
-- Recovery procedures
-- Failover mechanisms
-- Escalation protocols
+- **MANDATORY: All errors logged to master `shq.orbt_error_log` table**
+- Error detection and handling with centralized tracking
+- Recovery procedures with pattern recognition
+- Failover mechanisms with institutional learning
+- Escalation protocols with automatic triggers
 
 ### Build
 - Enhancement opportunities

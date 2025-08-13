@@ -225,7 +225,26 @@ Input → Validation → Processing → Output
 **Process ID:** Execute Repairs  
 **Altitude:** 30,000ft  
 **ORBT Stage:** Repair  
-**Purpose:** Define 3-strike escalation protocol and repair procedures.
+**Purpose:** Define 3-strike escalation protocol and repair procedures with centralized error logging.
+
+### Master Error Logging Requirement
+**ALL ERRORS MUST BE LOGGED TO THE CENTRAL `shq.orbt_error_log` TABLE IN THE SHQ DATABASE SCHEMA**
+
+**Mandatory Error Log Fields:**
+- **error_id:** Unique ID in format [DB].[SUBHIVE].[MICROPROCESS].[TOOL].[ALTITUDE].[STEP]
+- **orbt_status:** GREEN/YELLOW/RED classification
+- **agent_id:** Identifying which agent encountered the error
+- **error_type:** connection/validation/doctrine/escalation
+- **error_message:** Detailed error description
+- **timestamp:** When the error occurred
+- **occurrence_count:** Number of times this error has occurred
+- **escalation_level:** 0=first, 1=second, 2=escalated
+
+**Automatic Logging Triggers:**
+- Every exception or error condition
+- All repair attempts (successful or failed)
+- Every escalation decision
+- Resolution outcomes
 
 #### Strike 1: Specialist Auto-Fix
 **Trigger Conditions:**
@@ -233,8 +252,11 @@ Input → Validation → Processing → Output
 - Condition 2
 
 **Auto-Fix Procedures:**
-1. Procedure step
-2. Procedure step
+1. Log error to `orbt_error_log` with status YELLOW
+2. Query institutional knowledge for similar patterns
+3. Apply known solution if confidence > 0.8
+4. Update `resolution_method` field if successful
+5. Update `orbt_training_log` with outcome
 
 #### Strike 2: Domain Alternative
 **Trigger Conditions:**
@@ -242,19 +264,25 @@ Input → Validation → Processing → Output
 - Alternative available
 
 **Alternative Approaches:**
-1. Alternative method
-2. Alternative method
+1. Update `orbt_error_log` escalation_level to 1
+2. Try alternative specialist or method
+3. Log all attempts to error patterns table
+4. Update occurrence_count for pattern recognition
 
 #### Strike 3: Human Escalation
 **Trigger Conditions:**
-- Strike 2 failure
-- Business impact threshold
+- Strike 2 failure (occurrence_count >= 2)
+- Business impact threshold exceeded
 
-**Escalation Format:**
-- Error description
-- Attempted solutions
-- Business impact
-- Recommended action
+**Escalation Actions:**
+1. Update `orbt_error_log` with status RED
+2. Set `requires_human` = TRUE
+3. Create entry in `orbt_escalation_queue`
+4. Generate comprehensive error report including:
+   - Error history from master log
+   - All attempted solutions
+   - Business impact assessment
+   - Recommended human actions
 
 ---
 
