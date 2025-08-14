@@ -17,7 +17,8 @@
       "Bash(find:*)",
       "Bash(bash scripts/deploy-database.sh:*)",
       "Bash(export DATABASE_URL=\"postgresql://test:test@test:5432/test\")",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(git stash:*)"
     ],
     "deny": []
   }
